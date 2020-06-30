@@ -3,11 +3,12 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import './App.css';
 import Home  from './components/Home.js'
 import About from './components/About.js'
+import {BackgroundOverlay} from './style/base.js'
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <BackgroundOverlay>
         <Switch>
           <Route path="/about">
             <About />
@@ -16,7 +17,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </div>
+      </BackgroundOverlay>
     </BrowserRouter>
   );
 }

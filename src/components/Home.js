@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <Title>Daily Dozen Home</Title>
-            
+        
         </div>
     )
 }
