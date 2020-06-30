@@ -35,3 +35,21 @@ export const BlackButtonLink = styled(Link)`
     -webkit-appearance: none;
     -moz-appearance: none;
 `
+
+export const BlackButton = styled.button`
+    display: inline-block;
+    border: none;
+    padding: 1rem 1rem;
+    margin: 0;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-family: aleoLight;
+    font-size: larger;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+`
