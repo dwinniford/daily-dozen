@@ -1,8 +1,23 @@
 export const dailyDozenData = [
     {name: "Beans", 
         types: [
-            "Black Beans",
-            "Black-eyed Peas"
+            "Black beans",
+            "Black-eyed peas",
+            "Butter beans",
+            "Cannellini beans",
+            "Chickpeas",
+            "Edamame",
+            "English peas",
+            "Garbanzo peas",
+            "Great northern beans",
+            "Kidney beans",
+            "Lentils",
+            "Miso",
+            "Navy beans",
+            "Pinto beans",
+            "Small red beans",
+            "Split Peas",
+            "Tempeh"
         ]
     },
     {name: "Berries"},
