@@ -1,5 +1,10 @@
 export const dailyDozenData = [
-    {name: "Beans"},
+    {name: "Beans", 
+        types: [
+            "Black Beans",
+            "Black-eyed Peas"
+        ]
+    },
     {name: "Berries"},
     {name: "Other Fruits"},
     {name: "Cruciferous Vegetables"},
