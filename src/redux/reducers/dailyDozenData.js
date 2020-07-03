@@ -21,82 +21,89 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Berries", 
         types: [
-            "Black beans",
-            "Black-eyed peas",
-            "Butter beans",
-            "Cannellini beans",
-            "Chickpeas",
-            "Edamame",
-            "English peas",
-            "Garbanzo peas",
-            "Great northern beans",
-            "Kidney beans",
-            "Lentils",
-            "Miso",
-            "Navy beans",
-            "Pinto beans",
-            "Small red beans",
-            "Split Peas",
-            "Tempeh"
+            "Acai berries",
+            "Barberries",
+            "Blackberries",
+            "BlueBerries",
+            "Cherries",
+            "Concord grapes",
+            "Cranberries",
+            "Goji berries",
+            "Kumquats",
+            "Mulberries",
+            "Raspberries",
+            "Strawberries"
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Other Fruits", 
         types: [
-            "Black beans",
-            "Black-eyed peas",
-            "Butter beans",
-            "Cannellini beans",
-            "Chickpeas",
-            "Edamame",
-            "English peas",
-            "Garbanzo peas",
-            "Great northern beans",
-            "Kidney beans",
-            "Lentils",
-            "Miso",
-            "Navy beans",
-            "Pinto beans",
-            "Small red beans",
-            "Split Peas",
-            "Tempeh"
+            "Apples",
+            "Dried apricots",
+            "Avocados",
+            "Bananas",
+            "Cantaloupe",
+            "Clementines",
+            "Dates",
+            "Dried Figs",
+            "Grapefruit",
+            "Honeydew",
+            "Kiwifruit",
+            "Lemons",
+            "Limes",
+            "Lychees",
+            "Mangos",
+            "Nectarines",
+            "Oranges",
+            "Papaya",
+            "Passion fruit",
+            "Peaches",
+            "Pears",
+            "Pineapple",
+            "Plums",
+            "Pluots",
+            "Pomegranates",
+            "Prunes",
+            "Tangerines",
+            "Watermelon"
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Cruciferous Vegetables", 
         types: [
-            "Black beans",
-            "Black-eyed peas",
-            "Butter beans",
-            "Cannellini beans",
-            "Chickpeas",
-            "Edamame",
-            "English peas",
-            "Garbanzo peas",
-            "Great northern beans",
-            "Kidney beans",
-            "Lentils",
-            "Miso",
-            "Navy beans",
-            "Pinto beans",
-            "Small red beans",
-            "Split Peas",
-            "Tempeh"
+            "Arugula",
+            "Bok choy",
+            "Broccoli",
+            "Brussel sprouts",
+            "Cabbage",
+            "Cauliflower",
+            "Collard greens",
+            "Horseradish",
+            "Kale",
+            "Kohlrabi",
+            "Mustard greens",
+            "Radishes",
+            "Turnip Greens",
+            "Watercress"
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Greens", 
@@ -121,7 +128,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Other Vegetables", 
@@ -146,7 +154,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
         },
     {name: "Flaxseeds", 
@@ -171,7 +180,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Nuts and Seeds", 
@@ -196,7 +206,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Herbs and Spices", 
@@ -221,7 +232,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Whole Grains", 
@@ -246,7 +258,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     },
     {name: "Beverages", 
@@ -271,7 +284,8 @@ export const dailyDozenData = [
         ],
         servings: {
             quantity: 3,
-            size: ""
+            size: "",
+            used: 0
         }
     }
 ]

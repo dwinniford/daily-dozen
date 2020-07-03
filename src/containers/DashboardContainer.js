@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {dailyDozenData} from '../data/dailyDozenData.js'
+// import {dailyDozenData} from '../data/dailyDozenData.js'
 import Category from '../components/Category.js'
+import { connect } from 'react-redux'
 
-export default class DashboardContainer extends Component {
+class DashboardContainer extends Component {
     
     renderCategories = () => {
-        return dailyDozenData.map(cat => <Category key={cat.name} category={cat} />)
+        return this.props.categories.map(cat => <Category key={cat.name} category={cat} />)
     }
 
     render() {
@@ -16,3 +17,11 @@ export default class DashboardContainer extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        categories: state.builder.categories
+    }
+}
+
+export default connect(mapStateToProps)(DashboardContainer)
