@@ -7,7 +7,7 @@ import {EmptyCounter, CategoryHead } from '../style/dashboard.js'
 export default function Category(props) {
     const [display, toggleDisplay] = useState(false)
     const renderTypes = () => {
-        return <TypesCard types={props.category.types} />
+        return <TypesCard addIngredient={props.addIngredient} types={props.category.types} />
     }
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)
@@ -17,7 +17,7 @@ export default function Category(props) {
         let servingsArray = []
         let i = 1
         while (i <= props.category.servings.quantity) {
-            servingsArray.push(<EmptyCounter></EmptyCounter>)
+            servingsArray.push(<EmptyCounter key={i}></EmptyCounter>)
             i ++
         }
         return servingsArray 

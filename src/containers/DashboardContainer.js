@@ -7,7 +7,7 @@ import Search from '../components/Search.js'
 class DashboardContainer extends Component {
     
     renderCategories = () => {
-        return this.props.categories.map(cat => <Category key={cat.name} category={cat} />)
+        return this.props.categories.map(cat => <Category addIngredient={this.props.addIngredient} key={cat.name} category={cat} />)
     }
 
     render() {
@@ -26,4 +26,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(DashboardContainer)
+const mapDispatchToProps = dispatch => {
+    return {
+        addIngredient: (ingredient) => dispatch({type: "ADD_INGREDIENT", ingredient})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)

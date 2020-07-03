@@ -9,7 +9,7 @@ function Search(props) {
         <div>
             <Title>Build a Recipe</Title>
             <TypesGrid>
-            {props.ingredients.map(i => <TypeItem>{i}<AddButton>x</AddButton></TypeItem>)}
+            {props.ingredients.map(i => <TypeItem key={i}>{i}<AddButton>x</AddButton></TypeItem>)}
             </TypesGrid>
             <BlackButton>Search</BlackButton>
         </div>
