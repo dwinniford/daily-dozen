@@ -2,7 +2,8 @@ import { dailyDozenData} from './dailyDozenData.js'
 
 const initialState = {
     categories: dailyDozenData,
-    recipes: []
+    recipes: [],
+    ingredients: ["test", "another test"]
 }
 
 export default function builder(state = initialState, action) {

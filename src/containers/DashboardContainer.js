@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import {dailyDozenData} from '../data/dailyDozenData.js'
 import Category from '../components/Category.js'
 import { connect } from 'react-redux'
+import Search from '../components/Search.js'
 
 class DashboardContainer extends Component {
     
@@ -12,6 +13,7 @@ class DashboardContainer extends Component {
     render() {
         return (
             <div>
+                <Search />
                 {this.renderCategories()}
             </div>
         )

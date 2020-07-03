@@ -50,5 +50,6 @@ export const EmptyCounter = styled.button`
 
 export const CategoryHead = styled.div`
     display: grid;
-    grid-template-columns: 2fr 1fr
+    grid-template-columns: 2fr 1fr;
+    margin-top: 5px;
 `
