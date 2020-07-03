@@ -13,7 +13,7 @@ class DashboardContainer extends Component {
     render() {
         return (
             <div>
-                <Search />
+                <Search removeIngredient={this.props.removeIngredient} />
                 {this.renderCategories()}
             </div>
         )
@@ -28,7 +28,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addIngredient: (ingredient) => dispatch({type: "ADD_INGREDIENT", ingredient})
+        addIngredient: (ingredient) => dispatch({type: "ADD_INGREDIENT", ingredient}),
+        removeIngredient: (ingredient) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
     }
 }
 
