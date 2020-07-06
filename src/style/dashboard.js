@@ -38,8 +38,21 @@ export const EmptyCounter = styled.button`
     text-decoration: none;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
-    
-    
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+`
+export const FullCounter = styled.button`
+    display: inline-block;
+    border: none;
+    padding: .3rem .5rem;
+    margin: 0;
+    text-decoration: none;
+    background: rgba(0, 230, 64, .7);
+    border-radius: 5px;
     line-height: 1;
     cursor: pointer;
     text-align: center;

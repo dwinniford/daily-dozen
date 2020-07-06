@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import {BlackButton} from '../style/base.js'
 import TypesCard from './TypesCard.js'
-import {EmptyCounter, CategoryHead } from '../style/dashboard.js'
+import {EmptyCounter, CategoryHead, FullCounter } from '../style/dashboard.js'
 
 
 export default function Category(props) {
@@ -18,6 +18,12 @@ export default function Category(props) {
         let i = 1
         while (i <= props.category.servings.quantity) {
             servingsArray.push(<EmptyCounter key={i}></EmptyCounter>)
+            i ++
+        }
+        i = 1 
+        while (i <= props.category.servings.used) {
+            let key = servingsArray.length + 1
+            servingsArray.push(<FullCounter key={key}></FullCounter>)
             i ++
         }
         return servingsArray 
