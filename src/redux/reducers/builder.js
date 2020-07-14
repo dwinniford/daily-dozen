@@ -39,6 +39,8 @@ export default function builder(state = initialState, action) {
                 }
             })
             return {...state, categories: categoriesRemove, ingredients: state.ingredients.filter(i => i !== action.ingredient)}
+        case "SEARCH":
+            return {...state, searchResults: [...action.ingredients]}
         default:
             return state;
     }

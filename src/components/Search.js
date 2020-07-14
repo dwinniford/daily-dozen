@@ -1,12 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Title, BlackButton} from '../style/base.js'
-import {TypesGrid, TypeItem, AddButton} from "../style/dashboard.js"
+import {TypesGrid, TypeItem, AddButton, SearchResultsGrid} from "../style/dashboard.js"
 
 
 function Search(props) {
     const handleRemoveIngredient = (ingredient) => {
         props.removeIngredient(ingredient)
+    }
+    const handleSearch = (event) => {
+        props.search(props.ingredients)
     }
     
     return (
@@ -15,16 +18,25 @@ function Search(props) {
                 <TypesGrid>
                     {props.ingredients.map(i => <TypeItem key={i}>{i}<AddButton onClick={(event) => handleRemoveIngredient(i)}>x</AddButton></TypeItem>)}
                 </TypesGrid>
-            <BlackButton>Search</BlackButton>
+            <BlackButton onClick={handleSearch}>Search</BlackButton>
+            <SearchResultsGrid>
+                {props.searchResults.map(r => <BlackButton>{r}</BlackButton>)}
+            </SearchResultsGrid>
         </div>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.builder.ingredients
+        ingredients: state.builder.ingredients,
+        searchResults: state.builder.searchResults
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        search: (ingredients) => dispatch({type: "SEARCH", ingredients})
     }
 }
 
 
-export default connect(mapStateToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

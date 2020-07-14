@@ -66,3 +66,8 @@ export const CategoryHead = styled.div`
     grid-template-columns: 2fr 1fr;
     margin-top: 5px;
 `
+
+export const SearchResultsGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+`
