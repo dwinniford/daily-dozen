@@ -39,8 +39,14 @@ export default function builder(state = initialState, action) {
                 }
             })
             return {...state, categories: categoriesRemove, ingredients: state.ingredients.filter(i => i !== action.ingredient)}
-        case "SEARCH":
-            return {...state, searchResults: [...action.ingredients]}
+        case "SEARCH_REQUEST":
+            return state;
+        case "SEARCH_SUCCESS":
+            // console.log(action.searchResults)
+            return {...state, searchResults: action.searchResults}
+        case "SEARCH_ERROR":
+            console.log(action.message)
+            return state
         default:
             return state;
     }

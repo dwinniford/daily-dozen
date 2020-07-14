@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {search} from '../redux/actions/search'
 import {Title, BlackButton} from '../style/base.js'
 import {TypesGrid, TypeItem, AddButton, SearchResultsGrid} from "../style/dashboard.js"
 
@@ -20,7 +21,7 @@ function Search(props) {
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
-                {props.searchResults.map(r => <BlackButton>{r}</BlackButton>)}
+                {props.searchResults.map(r => <BlackButton key={r.recipe.label+"-"+r.recipe.source}>{r.recipe.label}</BlackButton>)}
             </SearchResultsGrid>
         </div>
     )
@@ -34,7 +35,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        search: (ingredients) => dispatch({type: "SEARCH", ingredients})
+        search: (ingredients) => dispatch(search(ingredients))
     }
 }
 

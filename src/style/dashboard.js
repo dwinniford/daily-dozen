@@ -70,4 +70,5 @@ export const CategoryHead = styled.div`
 export const SearchResultsGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
 `
