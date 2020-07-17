@@ -1,6 +1,7 @@
 import React from 'react'
 import {ListItem} from '../style/dashboard'
 import { BlackButton, ExternalLinkButton} from '../style/base.js'
+import RecipeTags from './RecipeTags'
 
 export default function RecipeInfoCard(props) {
     
@@ -19,6 +20,8 @@ export default function RecipeInfoCard(props) {
             </ExternalLinkButton>
             
             {renderIngredients()}
+            <h3>Tags</h3>
+            <RecipeTags recipe={props.recipe} />
         </div>
     )
 }
