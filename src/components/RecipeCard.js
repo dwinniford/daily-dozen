@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { BlackButton} from '../style/base.js'
-import {ListItem} from '../style/dashboard'
+
+import RecipeInfoCard from './RecipeInfoCard'
 
 export default function RecipeCard(props) {
     
@@ -8,28 +9,13 @@ export default function RecipeCard(props) {
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)
     }
-
-    const renderIngredients = () => {
-        return props.recipe.ingredientLines.map( i => {
-        return <ListItem key={i}>{i}</ListItem>
-        })
+    const buttonText = () => {
+        return display ? "Hide" : props.recipe.label
     }
-
-    const renderInfoCard = () => {
-        // display image, source with link to recipe, ingredients list
-        return (
-            <>
-                <img src={props.recipe.image} alt={props.recipe.label} />
-                <a href={props.recipe.url}>{props.recipe.source}</a>
-                {renderIngredients()}
-            </>
-        )
-    }
-    
     return (
         <div>
-            <BlackButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}>{props.recipe.label}</BlackButton>
-            {display? renderInfoCard() : null }
+            <BlackButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}>{buttonText()}</BlackButton>
+            {display? <RecipeInfoCard recipe={props.recipe} /> : null }
         </div>
     )
 }
