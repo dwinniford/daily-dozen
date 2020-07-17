@@ -1,5 +1,5 @@
 import React from 'react'
-import {TypesGrid, TypeItem, AddButton} from '../style/dashboard.js'
+import {TypesGrid, ListItem, AddButton} from '../style/dashboard.js'
 
 
 export default function TypesCard(props) {
@@ -8,7 +8,7 @@ export default function TypesCard(props) {
     }
     
     const renderTypes = () => {
-        return props.types.map( (t) => <TypeItem key={t} >{t}<AddButton onClick={(event) => handleAdd(t)}>+</AddButton></TypeItem >)
+        return props.types.map( (t) => <ListItem key={t} >{t}<AddButton onClick={(event) => handleAdd(t)}>+</AddButton></ListItem >)
     }
     return (
         <TypesGrid>

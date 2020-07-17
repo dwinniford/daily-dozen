@@ -5,9 +5,8 @@ export const TypesGrid = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
 `
 
-export const TypeItem = styled.div`
+export const ListItem = styled.div`
     color: #ffffff;
-
     font-size: larger;
 `
 
