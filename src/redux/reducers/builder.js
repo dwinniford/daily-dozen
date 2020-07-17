@@ -1,10 +1,11 @@
 import { dailyDozenData} from './dailyDozenData.js'
+import {searchResults} from './sampleSearch'
 
 const initialState = {
     categories: dailyDozenData,
     recipes: [],
     ingredients: [],
-    searchResults: []
+    searchResults: searchResults
 }
 
 export default function builder(state = initialState, action) {
