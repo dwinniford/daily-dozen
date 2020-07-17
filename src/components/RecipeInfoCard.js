@@ -1,5 +1,6 @@
 import React from 'react'
 import {ListItem} from '../style/dashboard'
+import { BlackButton, ExternalLinkButton} from '../style/base.js'
 
 export default function RecipeInfoCard(props) {
     
@@ -12,7 +13,11 @@ export default function RecipeInfoCard(props) {
     return (
         <div>
             <img src={props.recipe.image} alt={props.recipe.label} />
-            <a href={props.recipe.url}>{props.recipe.source}</a>
+            
+            <ExternalLinkButton href={props.recipe.url}>
+                {props.recipe.label} from {props.recipe.source}
+            </ExternalLinkButton>
+            
             {renderIngredients()}
         </div>
     )
