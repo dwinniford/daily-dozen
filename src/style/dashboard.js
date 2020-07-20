@@ -71,3 +71,23 @@ export const SearchResultsGrid = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
 `
+
+export const LabelInputForm = styled.form`
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    color: white;
+    font-size: larger;
+`
+
+export const FormInput = styled.input`
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    // font-size: larger
+`
+
+export const FormLabel = styled.label`
+    // font-size: larger;
+    align-self: center;
+`

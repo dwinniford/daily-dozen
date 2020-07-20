@@ -1,11 +1,12 @@
 import React from 'react'
+import {LabelInputForm, FormInput, FormLabel} from '../style/dashboard'
 
 export default function TagForm() {
     return (
-        <form>
-            <label for="name">enter a tag</label>
-            <input type="text" name="tag" ></input>
+        <LabelInputForm>
+            <FormLabel for="name">enter a tag</FormLabel>
+            <FormInput type="text" name="tag" ></FormInput>
             
-        </form> 
+        </LabelInputForm> 
     )
 }
