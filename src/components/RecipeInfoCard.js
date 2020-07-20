@@ -1,14 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {ListItem} from '../style/dashboard'
 import { BlackButton, ExternalLinkButton} from '../style/base.js'
 import RecipeTags from './RecipeTags'
 
 export default function RecipeInfoCard(props) {
+
+    const [display, toggleDisplay] = useState("Ingredients")
+    // const handleToggle = () => {
+    //     display === "ing" ? toggleDisplay("tags") : toggleDisplay("ing")
+    // }
     
     const renderIngredients = () => {
         return props.recipe.ingredientLines.map( i => {
         return <ListItem key={i}>{i}</ListItem>
         })
+    }
+    const tabClick = (event) => {
+        toggleDisplay(event.target.innerText)
+    }
+
+    const displayTab = () => {
+        switch(display) {
+            case "Ingredients":
+                return renderIngredients();
+            case "Tags":
+                return <RecipeTags recipe={props.recipe} />
+            default:
+                return null 
+        }
     }
     
     return (
@@ -18,10 +37,11 @@ export default function RecipeInfoCard(props) {
             <ExternalLinkButton href={props.recipe.url}>
                 {props.recipe.label} from {props.recipe.source}
             </ExternalLinkButton>
+            <BlackButton onClick={(event) => tabClick(event)}>Ingredients</BlackButton>
+            <BlackButton onClick={(event) => tabClick(event)}>Tags</BlackButton>
+            {/* {renderIngredients()} */}
+            {displayTab()}
             
-            {renderIngredients()}
-            <h3>Tags</h3>
-            <RecipeTags recipe={props.recipe} />
         </div>
     )
 }
