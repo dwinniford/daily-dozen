@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {ListItem} from '../style/dashboard'
+import TagForm from './TagForm'
 
 function RecipeTags(props) {
     
@@ -13,7 +14,7 @@ function RecipeTags(props) {
     }
     return (
         <div>
-            
+            <TagForm></TagForm>
             {tags().map(t => <ListItem key={t}>{t}</ListItem>)}
         </div>
     )
