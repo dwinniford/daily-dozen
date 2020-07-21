@@ -50,8 +50,16 @@ export default function builder(state = initialState, action) {
             console.log(action.message)
             return state;
         case "SEARCH_TAGS":
-            let tagSearchResults = ["test tag", "second tag"]
-            return {...state, tagSearchResults}
+            let tagSearchResults = []
+            state.categories.forEach(cat => {
+                let catResults = cat.types.filter( t => {
+                    return t.includes(action.text)
+                })
+                console.log(catResults)
+                tagSearchResults.push(catResults)
+            })
+            console.log(tagSearchResults)
+            return {...state, tagSearchResults: tagSearchResults.flat()}
         default:
             return state;
     }
