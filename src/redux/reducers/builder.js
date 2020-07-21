@@ -5,7 +5,8 @@ const initialState = {
     categories: dailyDozenData,
     recipes: [],
     ingredients: [],
-    searchResults: searchResults
+    searchResults: searchResults,
+    tagSearchResults: ["no tag results", "nothin'"]
 }
 
 export default function builder(state = initialState, action) {
@@ -47,7 +48,10 @@ export default function builder(state = initialState, action) {
             return {...state, searchResults: action.searchResults}
         case "SEARCH_ERROR":
             console.log(action.message)
-            return state
+            return state;
+        case "SEARCH_TAGS":
+            let tagSearchResults = ["test tag", "second tag"]
+            return {...state, tagSearchResults}
         default:
             return state;
     }

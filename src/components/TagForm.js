@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import {LabelInputForm, FormInput, FormLabel} from '../style/dashboard'
+import {connect} from 'react-redux'
 
-export default function TagForm() {
+function TagForm(props) {
     const [tagSearchResults, setTagSearchResults] = useState([])
     
     const handleInputKeyUp = (event) => {
@@ -14,9 +15,15 @@ export default function TagForm() {
             <FormLabel for="name">enter a tag</FormLabel>
             <FormInput onKeyUp={(event) => handleInputKeyUp(event)} type="text" name="tag" ></FormInput>
             <ul>
-                {tagSearchResults.map(t => <li>{t}</li>)}
+                {props.tagSearchResults.map(t => <li>{t}</li>)}
             </ul>
         </LabelInputForm> 
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        tagSearchResults: state.builder.tagSearchResults
+    }
+}
+export default connect(mapStateToProps)(TagForm)
