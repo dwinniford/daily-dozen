@@ -7,7 +7,8 @@ function TagForm(props) {
     
     const handleInputKeyUp = (event) => {
         console.log(event.target.value)
-        setTagSearchResults([...tagSearchResults, event.target.value])
+        // setTagSearchResults([...tagSearchResults, event.target.value])
+        props.searchTags(event.target.value)
     }
 
     return (
@@ -26,4 +27,10 @@ const mapStateToProps = (state) => {
         tagSearchResults: state.builder.tagSearchResults
     }
 }
-export default connect(mapStateToProps)(TagForm)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        searchTags: (text) => dispatch({type: "SEARCH_TAGS", text})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TagForm)
