@@ -79,15 +79,27 @@ export const LabelInputForm = styled.form`
     grid-gap: 5px;
     color: white;
     font-size: larger;
+    
 `
 
 export const FormInput = styled.input`
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    // font-size: larger
+    /* font-size: larger */
 `
 
 export const FormLabel = styled.label`
-    // font-size: larger;
+    /* font-size: larger; */
     align-self: center;
+`
+
+export const DropDownContainer = styled.div`
+    position: relative;
+`
+
+export const SearchDropDown = styled.ul`
+    position: absolute;
+    background: white;
+    color: black;
+    width: 100%;
 `
