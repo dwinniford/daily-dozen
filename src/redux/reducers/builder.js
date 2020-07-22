@@ -58,12 +58,9 @@ export default function builder(state = initialState, action) {
                     let catResults = cat.types.filter( t => {
                         return t.includes(action.text)
                     })
-                    console.log(catResults)
                     tagSearchResults.push(catResults)
                 })
             }
-            
-            console.log(tagSearchResults)
             return {...state, tagSearchResults: tagSearchResults.flat()}
         default:
             return state;

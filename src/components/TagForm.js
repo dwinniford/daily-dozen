@@ -1,5 +1,6 @@
 import React from 'react'
-import {LabelInputForm, FormInput, FormLabel,DropDownContainer, SearchDropDown} from '../style/dashboard'
+import {LabelInputForm, FormInput, FormLabel, 
+    DropDownContainer, SearchDropDown, AddButton, DropDownItem} from '../style/dashboard'
 import {connect} from 'react-redux'
 
 function TagForm(props) {
@@ -16,7 +17,7 @@ function TagForm(props) {
             <DropDownContainer>
                 <FormInput onKeyUp={(event) => handleInputKeyUp(event)} type="text" name="tag" ></FormInput>
                 <SearchDropDown>
-                    {props.tagSearchResults.map(t => <li key={t}>{t}</li>)}
+                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton>+</AddButton> </DropDownItem>)}
                 </SearchDropDown>
             </DropDownContainer>
         </LabelInputForm> 
