@@ -6,7 +6,7 @@ const initialState = {
     recipes: [],
     ingredients: [],
     searchResults: searchResults,
-    tagSearchResults: ["no tag results", "nothin'"]
+    tagSearchResults: []
 }
 
 export default function builder(state = initialState, action) {
@@ -51,13 +51,18 @@ export default function builder(state = initialState, action) {
             return state;
         case "SEARCH_TAGS":
             let tagSearchResults = []
-            state.categories.forEach(cat => {
-                let catResults = cat.types.filter( t => {
-                    return t.includes(action.text)
+            if(action.text.length === 0) {
+                tagSearchResults = []
+            } else {
+                state.categories.forEach(cat => {
+                    let catResults = cat.types.filter( t => {
+                        return t.includes(action.text)
+                    })
+                    console.log(catResults)
+                    tagSearchResults.push(catResults)
                 })
-                console.log(catResults)
-                tagSearchResults.push(catResults)
-            })
+            }
+            
             console.log(tagSearchResults)
             return {...state, tagSearchResults: tagSearchResults.flat()}
         default:
