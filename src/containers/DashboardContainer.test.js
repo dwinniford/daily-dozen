@@ -23,8 +23,8 @@ test('it displays "bok choy" on "cruciferous vegetable" click', () => {
 
     expect(getByText("Cruciferous Vegetables")).toBeInTheDocument()
 
-    // fireEvent.click(getByText("Cruciferous Vegetables"))
+    fireEvent.click(getByText("Cruciferous Vegetables"))
 
-    // expect(getByText("bok choy")).toBeInTheDocument()
+    expect(getByText("Bok choy")).toBeInTheDocument()
 })
 
