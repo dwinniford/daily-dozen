@@ -1,6 +1,6 @@
 import React, { useState} from 'react'
 import {BlackButton} from '../style/base.js'
-import TypesCard from './TypesCard.js'
+import TypesCard from './TypesCard'
 import {EmptyCounter, CategoryHead, FullCounter } from '../style/dashboard.js'
 
 
