@@ -11,13 +11,18 @@ function TagForm(props) {
         props.searchTags(event.target.value)
     }
 
+    const handleAddTag = (event, t) => {
+        event.preventDefault()
+        console.log("add tag - ", t)
+    }
+
     return (
         <LabelInputForm>
             <FormLabel htmlFor="name">enter a tag</FormLabel>
             <DropDownContainer>
                 <FormInput onKeyUp={(event) => handleInputKeyUp(event)} type="text" name="tag" ></FormInput>
                 <SearchDropDown>
-                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton>+</AddButton> </DropDownItem>)}
+                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton onClick={(e) => handleAddTag(e, t)}>+</AddButton> </DropDownItem>)}
                 </SearchDropDown>
             </DropDownContainer>
         </LabelInputForm> 
