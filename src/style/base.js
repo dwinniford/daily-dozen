@@ -16,6 +16,9 @@ export const NavGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 10px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 export const BlackButtonLink = styled(Link)`
