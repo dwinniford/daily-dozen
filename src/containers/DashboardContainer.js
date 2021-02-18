@@ -4,6 +4,7 @@ import Category from '../components/Category.js'
 import { connect } from 'react-redux'
 import Search from '../components/Search.js'
 import {DashboardGrid } from "../style/dashboard.js"
+import {Title} from '../style/base.js'
 
 class DashboardContainer extends Component {
     
@@ -14,6 +15,9 @@ class DashboardContainer extends Component {
     render() {
         return (
             <DashboardGrid>
+                <div>
+                    <Title>Menu Plan</Title>
+                </div>
                 <Search removeIngredient={this.props.removeIngredient} />
                 <div>
                     {this.renderCategories()}
