@@ -20,6 +20,7 @@ class DashboardContainer extends Component {
                 </div>
                 <Search removeIngredient={this.props.removeIngredient} />
                 <div>
+                    <Title>Daily Dozen</Title>
                     {this.renderCategories()}
                 </div>
                 
