@@ -6,7 +6,7 @@ export const Title = styled.h1`
 ` 
 
 export const BackgroundOverlay = styled.div`
-    grid-column: 2;
+    grid-column: 1;
     background:  rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     padding: 20px;

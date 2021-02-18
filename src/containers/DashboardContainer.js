@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Category from '../components/Category.js'
 import { connect } from 'react-redux'
 import Search from '../components/Search.js'
+import {DashboardGrid } from "../style/dashboard.js"
 
 class DashboardContainer extends Component {
     
@@ -12,10 +13,13 @@ class DashboardContainer extends Component {
 
     render() {
         return (
-            <div>
+            <DashboardGrid>
                 <Search removeIngredient={this.props.removeIngredient} />
-                {this.renderCategories()}
-            </div>
+                <div>
+                    {this.renderCategories()}
+                </div>
+                
+            </DashboardGrid>
         )
     }
 }

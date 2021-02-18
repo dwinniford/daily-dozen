@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+export const DashboardGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media(min-width: 992px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+`
+
 export const TypesGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

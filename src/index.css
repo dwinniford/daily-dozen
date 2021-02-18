@@ -15,5 +15,6 @@ body {
 
 div#root {
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 705px) 1fr;
+  /* grid-template-columns: 1fr minmax(320px, 705px) 1fr; */
+  grid-template-columns: 1fr;
 }
