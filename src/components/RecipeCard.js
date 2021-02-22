@@ -13,9 +13,13 @@ export default function RecipeCard(props) {
     const buttonText = () => {
         return display ? "Hide" : props.recipe.label
     }
+
+    const chevron = () => {
+        return display ? <WhiteChevronRight down="true" /> : <WhiteChevronRight />
+    }
     return (
         <div>
-            <BlackButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}>{buttonText()} <WhiteChevronRight /></BlackButton>
+            <BlackButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}>{buttonText()} {chevron()}</BlackButton>
             {display? <RecipeInfoCard recipe={props.recipe} /> : null }
         </div>
     )
