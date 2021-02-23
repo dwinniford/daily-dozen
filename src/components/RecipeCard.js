@@ -24,7 +24,7 @@ export default function RecipeCard(props) {
                 {props.recipe.label}
             </Subtitle>
             <ExpandButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
-            {display? <RecipeInfoCard recipe={props.recipe} /> : null }
+            {display? <RecipeInfoCard recipe={props.recipe} expand={true} /> : <RecipeInfoCard recipe={props.recipe} expand={false} /> }
         </CardHolder>
     )
 }

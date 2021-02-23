@@ -131,3 +131,8 @@ export const DropDownItem = styled.li`
 export const CardHolder = styled.div`
     position: relative;
 `
+export const CollapseHolder = styled.div`
+    height: ${props => props.expand ? "32rem" : "0"};
+    transition: height 1s ease; 
+    overflow: hidden;
+`

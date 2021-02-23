@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {ListItem} from '../style/dashboard'
+import {ListItem, CollapseHolder} from '../style/dashboard'
 import { BlackButton, ExternalLinkButton} from '../style/base.js'
 import RecipeTags from './RecipeTags'
 
@@ -31,7 +31,7 @@ export default function RecipeInfoCard(props) {
     }
     
     return (
-        <div>
+        <CollapseHolder expand={props.expand}>
             <img src={props.recipe.image} alt={props.recipe.label} />
             
             <ExternalLinkButton href={props.recipe.url}>
@@ -42,6 +42,6 @@ export default function RecipeInfoCard(props) {
             {/* {renderIngredients()} */}
             {displayTab()}
             
-        </div>
+        </CollapseHolder>
     )
 }
