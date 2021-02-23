@@ -132,7 +132,14 @@ export const CardHolder = styled.div`
     position: relative;
 `
 export const CollapseHolder = styled.div`
-    height: ${props => props.expand ? "32rem" : "0"};
+    height: ${props => props.expand ? props.height+"px"  : "0"};
     transition: height 1s ease; 
     overflow: hidden;
+    /* visibility: ${props => props.expand ? "visible" : "hidden"} */
+`
+export const CollapseInner = styled.div`
+    height: auto;
+`
+export const RecipeImg = styled.img`
+    height: 300px;
 `
