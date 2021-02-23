@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import { BlackButton} from '../style/base.js'
+import { Subtitle, ExpandButton} from '../style/base.js'
+import {CardHolder} from '../style/dashboard'
 import {WhiteChevronRight} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
@@ -10,17 +11,20 @@ export default function RecipeCard(props) {
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)
     }
-    const buttonText = () => {
-        return display ? "Hide" : props.recipe.label
-    }
+    // const buttonText = () => {
+    //     return display ? "Hide" : props.recipe.label
+    // }
 
     const chevron = () => {
         return display ? <WhiteChevronRight down="true" /> : <WhiteChevronRight />
     }
     return (
-        <div>
-            <BlackButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}>{buttonText()} {chevron()}</BlackButton>
+        <CardHolder>
+            <Subtitle>
+                {props.recipe.label}
+            </Subtitle>
+            <ExpandButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
             {display? <RecipeInfoCard recipe={props.recipe} /> : null }
-        </div>
+        </CardHolder>
     )
 }

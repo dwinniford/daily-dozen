@@ -128,3 +128,6 @@ export const SearchDropDown = styled.ul`
 export const DropDownItem = styled.li`
     list-style-type: none;
 `
+export const CardHolder = styled.div`
+    position: relative;
+`

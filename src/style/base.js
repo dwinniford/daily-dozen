@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom'
 export const Title = styled.h1`
     color: white;
 ` 
+export const Subtitle = styled.h3`
+    color: white;
+    font-weight: 600;
+`
 
 export const BackgroundOverlay = styled.div`
     grid-column: 1;
@@ -55,6 +59,14 @@ export const BlackButton = styled.button`
     transition: background 250ms ease-in-out, transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
+`
+export const ExpandButton = styled(BlackButton)`
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 0;
+    outline: none;
 `
 
 export const ExternalLinkButton = styled.a`
