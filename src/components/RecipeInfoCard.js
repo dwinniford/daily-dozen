@@ -19,7 +19,8 @@ export default function RecipeInfoCard(props) {
         // })
         console.log("perform side effect", innerRef.current.clientHeight, childrenColl, childrenHeight)
         // set height prop on Collapse holder
-        setInnerHeight(innerRef.current.offsetHeight)
+        // setInnerHeight(innerRef.current.offsetHeight)
+        setInnerHeight(childrenHeight)
         //prevent infinite loop
     }, [])
 
