@@ -50,7 +50,7 @@ export const BlackButton = styled.button`
     padding: 1rem 1rem;
     margin: 0;
     text-decoration: none;
-    background: rgba(0, 0, 0, 0.7);
+    background: #23272b;
     color: #ffffff;
     font-family: aleoLight;
     font-size: larger;
@@ -60,6 +60,13 @@ export const BlackButton = styled.button`
     transition: background 250ms ease-in-out, transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border-radius: .25rem;
+    :hover {
+        background: #000;
+    }
+    :focus {
+        outline: none;
+    }
 `
 export const ExpandButton = styled(BlackButton)`
     position: absolute;
