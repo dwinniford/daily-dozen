@@ -87,3 +87,13 @@ export const ExternalLinkButton = styled.a`
     -webkit-appearance: none;
     -moz-appearance: none;
 `
+
+export const ExternalLink = styled.a`
+    color: #ffffff;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+    font-family: aleoLight;
+    line-height: 1.25;
+    display: block;
+`

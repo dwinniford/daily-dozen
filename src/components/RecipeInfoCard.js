@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {ListItem, CollapseHolder, CollapseInner, RecipeImg} from '../style/dashboard'
-import { BlackButton, ExternalLinkButton} from '../style/base.js'
+import { BlackButton, ExternalLink} from '../style/base.js'
 import RecipeTags from './RecipeTags'
 
 export default function RecipeInfoCard(props) {
@@ -52,11 +52,11 @@ export default function RecipeInfoCard(props) {
     return (
         <CollapseHolder expand={props.expand} height={innerHeight}>
             <CollapseInner ref={innerRef}>
+                <ExternalLink href={props.recipe.url}>
+                    from {props.recipe.source}
+                </ExternalLink>
                 <RecipeImg src={props.recipe.image} alt={props.recipe.label} />
                 
-                <ExternalLinkButton href={props.recipe.url}>
-                    {props.recipe.label} from {props.recipe.source}
-                </ExternalLinkButton>
                 <BlackButton onClick={(event) => tabClick(event)}>Ingredients</BlackButton>
                 <BlackButton onClick={(event) => tabClick(event)}>Tags</BlackButton>
                 {/* {renderIngredients()} */}
