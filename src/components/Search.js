@@ -35,7 +35,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        search: (ingredients) => dispatch(search(ingredients))
+        search: (ingredients) => dispatch(search(ingredients)),
+        removeIngredient: (ingredient) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
     }
 }
 

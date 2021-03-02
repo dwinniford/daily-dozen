@@ -18,7 +18,7 @@ class DashboardContainer extends Component {
                 <DashboardBlock>
                     <Title>Meal Plan</Title>
                 </DashboardBlock>
-                <Search removeIngredient={this.props.removeIngredient} />
+                <Search  />
                 <DashboardBlock>
                     <Title>Daily Dozen</Title>
                     {this.renderCategories()}
