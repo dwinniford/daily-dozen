@@ -133,6 +133,7 @@ export const CardHolder = styled.div`
 `
 export const CollapseHolder = styled.div`
     height: ${props => props.expand ? props.height+"px"  : "0"};
+    opacity: ${props => props.expand ? "1" : "0"};
     transition: height 1s ease; 
     overflow: hidden;
     /* visibility: ${props => props.expand ? "visible" : "hidden"} */
