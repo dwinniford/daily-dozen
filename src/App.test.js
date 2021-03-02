@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM, {unmountComponentAtNode} from 'react-dom'
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import App from './App';
+
 import { Provider } from 'react-redux'
 import store from './redux/store.js'
 
@@ -28,7 +29,7 @@ it('renders home page title', () => {
 })
 
 // test that the dashboard link redirects to the build a recipe page.
-test('it redirects to build a recipe on dashboard link click', () => {
+test('it redirects to dashboard on dashboard link click', () => {
   // 1. mount app
   const {getByText} = render(<Provider store={store}><App /></Provider>, container)
   // 2. check initial text value - title
@@ -36,9 +37,11 @@ test('it redirects to build a recipe on dashboard link click', () => {
   // 3. find and click the dashboard button
   fireEvent.click(getByText('Dashboard'))
   // 4. check for the new title value
-  expect(getByText('Build a Recipe')).toBeInTheDocument()
+  expect(getByText('Find a Recipe')).toBeInTheDocument()
 
 })
+
+
 
 
 
