@@ -16,7 +16,7 @@ export default function RecipeCard(props) {
     // }
 
     const chevron = () => {
-        return display ? <WhiteChevronRight down="true" /> : <WhiteChevronRight />
+        return display ? <WhiteChevronRight down="true" title="collapse recipe"/> : <WhiteChevronRight title="expand recipe" />
     }
     return (
         <CardHolder>

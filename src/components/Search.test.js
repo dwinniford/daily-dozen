@@ -1,7 +1,7 @@
 import Search from './Search'
 import React from 'react'
 import {unmountComponentAtNode} from 'react-dom'
-import {render} from '@testing-library/react'
+import {render, fireEvent} from '@testing-library/react'
 
 
 import { Provider } from 'react-redux'
@@ -42,6 +42,12 @@ describe('Recipe card expands and collapses', () => {
     test('recipe card detail info is not visible before expand', ()=> {
         // how to test 
         expect(component.queryAllByText("Ingredients")[0]).not.toBeVisible()
+    })
+
+    test('recipe details are visible after expand', () => {
+        // console.log(component.getAllByRole('img')[0])
+        fireEvent.click(component.getAllByRole('img')[0])
+        expect(component.queryAllByText("Ingredients")[0]).toBeVisible()
     })
     
 })
