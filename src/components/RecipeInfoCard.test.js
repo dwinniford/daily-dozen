@@ -2,7 +2,7 @@ import RecipeInfoCard from './RecipeInfoCard.js'
 import React from 'react'
 
 import {unmountComponentAtNode} from 'react-dom'
-import {render, fireEvent, screen } from '@testing-library/react'
+import {render, fireEvent, screen, waitForElement } from '@testing-library/react'
 
 
 import { Provider } from 'react-redux'
@@ -15,7 +15,7 @@ let component = null
 beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
-    component = render(<RecipeInfoCard expand={true} recipe={searchResults[0].recipe} />, container)
+    component = render(<Provider store={store} ><RecipeInfoCard expand={true} recipe={searchResults[0].recipe} /></Provider>, container)
 })
 
 afterEach(() => {
@@ -27,4 +27,16 @@ afterEach(() => {
 
 test("it displays an image from the recipe", ()=> {
     expect(component.getByRole('img')).toBeInTheDocument()
+})
+
+test("Tags button toggles tag input form",  ()=> {
+    expect(component.getByText("Tags")).toBeInTheDocument()
+    fireEvent.click(component.getByText("Tags"))
+    // is fire event not working correctly
+    // current rtl library does not have waitFor but has waitForElement
+    // await waitForElement(() => {
+    //     
+    // })
+    expect(component.getByText('enter a tag')).toBeInTheDocument()
+    screen.debug()
 })

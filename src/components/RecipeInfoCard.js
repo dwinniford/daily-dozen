@@ -34,8 +34,9 @@ export default function RecipeInfoCard(props) {
         return <ListItem key={i}>{i}</ListItem>
         })
     }
-    const tabClick = (event) => {
-        toggleDisplay(event.target.innerText)
+    const tabClick = (event, text) => {
+        console.log(text)
+        toggleDisplay(text)
     }
 
     const displayTab = () => {
@@ -57,8 +58,8 @@ export default function RecipeInfoCard(props) {
                 </ExternalLink>
                 <RecipeImg src={props.recipe.image} alt={props.recipe.label} />
                 
-                <BlackButton onClick={(event) => tabClick(event)}>Ingredients</BlackButton>
-                <BlackButton onClick={(event) => tabClick(event)}>Tags</BlackButton>
+                <BlackButton onClick={(event) => tabClick(event, "Ingredients")}>Ingredients</BlackButton>
+                <BlackButton onClick={(event) => tabClick(event, "Tags")}>Tags</BlackButton>
                 {/* {renderIngredients()} */}
                 {displayTab()}
             </CollapseInner>
