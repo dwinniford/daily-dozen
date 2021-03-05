@@ -1,7 +1,7 @@
 import Search from './Search'
 import React from 'react'
 import {unmountComponentAtNode} from 'react-dom'
-import {render, fireEvent} from '@testing-library/react'
+import {render, fireEvent, screen } from '@testing-library/react'
 
 
 import { Provider } from 'react-redux'
@@ -48,6 +48,16 @@ describe('Recipe card expands and collapses', () => {
         // console.log(component.getAllByRole('img')[0])
         fireEvent.click(component.getAllByRole('img')[0])
         expect(component.queryAllByText("Ingredients")[0]).toBeVisible()
+    })
+    // try moving this test to RecipeInfoCard
+    test("tags input is not visible", async () => {
+        fireEvent.click(component.getAllByRole('img')[0])
+        expect(component.queryByText("enter a tag")).not.toBeInTheDocument()
+        // console.log(component.getAllByText('Tags')[0])
+
+        // fireEvent.click(component.getAllByText('Tags')[0])
+        // screen.debug()
+        // expect(await component.findByText(/enter a tag/)).toBeInTheDocument()
     })
     
 })
