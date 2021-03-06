@@ -35,7 +35,7 @@ export default function RecipeInfoCard(props) {
         })
     }
     const tabClick = (event, text) => {
-        console.log(text)
+        // console.log(text)
         toggleDisplay(text)
     }
 

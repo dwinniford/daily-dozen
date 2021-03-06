@@ -29,14 +29,9 @@ test("it displays an image from the recipe", ()=> {
     expect(component.getByRole('img')).toBeInTheDocument()
 })
 
-test("Tags button toggles tag input form",  ()=> {
+test("Tags button toggles tag input form", ()=> {
     expect(component.getByText("Tags")).toBeInTheDocument()
+    expect(component.queryByText('enter a tag')).not.toBeInTheDocument()
     fireEvent.click(component.getByText("Tags"))
-    // is fire event not working correctly
-    // current rtl library does not have waitFor but has waitForElement
-    // await waitForElement(() => {
-    //     
-    // })
     expect(component.getByText('enter a tag')).toBeInTheDocument()
-    screen.debug()
 })
