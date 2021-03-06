@@ -6,25 +6,28 @@ import {Provider} from 'react-redux'
 import store from '../redux/store'
 
 let container = null 
+let component = null
 
 beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
+    component = render(<Provider store={store}><DashboardContainer /></Provider>)
 })
 
 afterEach(() => {
     unmountComponentAtNode(container)
     container.remove()
     container = null 
+    component = null
 })
 
 test('it displays "bok choy" on "cruciferous vegetable" click', () => {
-    const {getByText} = render(<Provider store={store}><DashboardContainer /></Provider>)
 
-    expect(getByText("Cruciferous Vegetables")).toBeInTheDocument()
+    expect(component.queryByText("Bok choy")).not.toBeInTheDocument()
+    expect(component.getByText("Cruciferous Vegetables")).toBeInTheDocument()
 
-    fireEvent.click(getByText("Cruciferous Vegetables"))
+    fireEvent.click(component.getByText("Cruciferous Vegetables"))
 
-    expect(getByText("Bok choy")).toBeInTheDocument()
+    expect(component.getByText("Bok choy")).toBeInTheDocument()
 })
 
