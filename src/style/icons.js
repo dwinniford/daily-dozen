@@ -1,5 +1,6 @@
 import {ChevronRight} from '@styled-icons/feather/ChevronRight'
 import styled from 'styled-components'
+import {Plus} from '@styled-icons/feather/Plus'
 
 export const WhiteChevronRight = styled(ChevronRight)`
     color: #ffffff;
@@ -8,3 +9,9 @@ export const WhiteChevronRight = styled(ChevronRight)`
     transform: ${(props) => props.down ? 'rotate(90deg)' : 'rotate(0deg)'};
     transition: transform 1s ease;
 `
+export const WhitePlus = styled(Plus)`
+    color: #ffffff;
+    height: 25px;
+    font-weight: 600;
+`
+
