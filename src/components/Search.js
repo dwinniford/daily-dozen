@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {search} from '../redux/actions/search'
 import {Title, BlackButton} from '../style/base.js'
 import {TypesGrid, ListItem, AddButton, SearchResultsGrid, DashboardBlock} from "../style/dashboard.js"
+import {WhiteX} from '../style/icons'
 import RecipeCard from './RecipeCard.js'
 
 function Search(props) {
@@ -17,7 +18,7 @@ function Search(props) {
         <DashboardBlock>
             <Title>Find a Recipe</Title>
                 <TypesGrid>
-                    {props.ingredients.map(i => <ListItem key={i}>{i}<AddButton onClick={(event) => handleRemoveIngredient(i)}>x</AddButton></ListItem>)}
+                    {props.ingredients.map(i => <ListItem key={i}>{i}<AddButton onClick={(event) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i}`} /></AddButton></ListItem>)}
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
