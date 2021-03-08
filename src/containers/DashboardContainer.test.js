@@ -31,3 +31,14 @@ test('it displays "bok choy" on "cruciferous vegetable" click', () => {
     expect(component.getByText("Bok choy")).toBeInTheDocument()
 })
 
+test("add Black beans adds to search", () => {
+    expect(component.getByText("Beans")).toBeInTheDocument()
+    fireEvent.click(component.getByText("Beans"))
+    expect(component.getByText("Black beans")).toBeInTheDocument()
+    // how to click the add button within the Black beans div
+    // switch to using svg first for +
+    expect(component.getByText("Add Black beans to search")).toBeInTheDocument()
+    fireEvent.click(component.getByText("Add Black beans to search"))
+    expect(component.getByText("remove Black beans")).toBeInTheDocument()
+})
+
