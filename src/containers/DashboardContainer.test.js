@@ -3,15 +3,24 @@ import {unmountComponentAtNode} from 'react-dom'
 import {render, fireEvent} from '@testing-library/react'
 import DashboardContainer from './DashboardContainer'
 import {Provider} from 'react-redux'
-import store from '../redux/store'
+// import store from '../redux/store'
+
+import { createStore, applyMiddleware } from "redux"
+// import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import {rootReducer} from "../redux/reducers/rootReducer.js"
+
+
 
 let container = null 
 let component = null
+let store = null
 
 beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
-    component = render(<Provider store={store}><DashboardContainer /></Provider>)
+    store = createStore(rootReducer, applyMiddleware(thunk));
+    component = render(<Provider store={store}><DashboardContainer /></Provider>, container)
 })
 
 afterEach(() => {
@@ -40,5 +49,14 @@ test("add Black beans adds to search", () => {
     expect(component.getByText("Add Black beans to search")).toBeInTheDocument()
     fireEvent.click(component.getByText("Add Black beans to search"))
     expect(component.getByText("remove Black beans")).toBeInTheDocument()
+})
+
+test("removes Black beans from search", () => {
+    fireEvent.click(component.getByText("Beans"))
+    fireEvent.click(component.getByText("Add Black beans to search"))
+    expect(component.getByText("remove Black beans")).toBeInTheDocument()
+    fireEvent.click(component.getByText("remove Black beans"))
+    expect(component.queryByText('remove Black beans')).not.toBeInTheDocument()
+
 })
 
