@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import {dailyDozenData} from '../data/dailyDozenData.js'
 import Category from '../components/Category.js'
 import { connect } from 'react-redux'
-import Search from '../components/Search.js'
+import Search from '../components/Search'
 import {DashboardGrid, DashboardBlock } from "../style/dashboard.js"
 import {Title} from '../style/base.js'
 

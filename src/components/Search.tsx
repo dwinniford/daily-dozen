@@ -6,11 +6,12 @@ import {TypesGrid, ListItem, AddButton, SearchResultsGrid, DashboardBlock} from 
 import {WhiteX} from '../style/icons'
 import RecipeCard from './RecipeCard.js'
 
-function Search(props) {
-    const handleRemoveIngredient = (ingredient) => {
+
+function Search(props: {removeIngredient: Function, search: Function, ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]}) {
+    const handleRemoveIngredient = (ingredient: string) => {
         props.removeIngredient(ingredient)
     }
-    const handleSearch = (event) => {
+    const handleSearch = (event: {}) => {
         props.search(props.ingredients)
     }
     
@@ -18,7 +19,7 @@ function Search(props) {
         <DashboardBlock>
             <Title>Find a Recipe</Title>
                 <TypesGrid>
-                    {props.ingredients.map(i => <ListItem key={i}>{i}<AddButton onClick={(event) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i}`} /></AddButton></ListItem>)}
+                    {props.ingredients.map(i => <ListItem key={i}>{i}<AddButton onClick={(event: {}) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i}`} /></AddButton></ListItem>)}
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
@@ -28,16 +29,16 @@ function Search(props) {
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: {builder: {ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]} }) => {
     return {
         ingredients: state.builder.ingredients,
         searchResults: state.builder.searchResults
     }
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Function) => {
     return {
-        search: (ingredients) => dispatch(search(ingredients)),
-        removeIngredient: (ingredient) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
+        search: (ingredients: string[]) => dispatch(search(ingredients)),
+        removeIngredient: (ingredient: string) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
     }
 }
 
