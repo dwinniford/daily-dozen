@@ -1,7 +1,8 @@
 import React, { useState} from 'react'
 import {BlackButton} from '../style/base.js'
 import TypesCard from './TypesCard'
-import {EmptyCounter, CategoryHead, FullCounter } from '../style/dashboard.js'
+import {CategoryHead } from '../style/dashboard.js'
+import {EmptyCircle, WhiteCheckCircle} from '../style/icons'
 
 
 export default function Category(props) {
@@ -17,13 +18,13 @@ export default function Category(props) {
         let servingsArray = []
         let i = 1
         while (i <= props.category.servings.quantity) {
-            servingsArray.push(<EmptyCounter key={i}></EmptyCounter>)
+            servingsArray.push(<EmptyCircle key={i} title={`unchecked ${props.category.name} serving`}></EmptyCircle>)
             i ++
         }
         i = 1 
         while (i <= props.category.servings.used) {
             let key = servingsArray.length + 1
-            servingsArray.push(<FullCounter key={key}></FullCounter>)
+            servingsArray.push(<WhiteCheckCircle key={key} title={`checked ${props.category.name} serving`}></WhiteCheckCircle>)
             i ++
         }
         return servingsArray 

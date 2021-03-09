@@ -1,6 +1,8 @@
 import {ChevronRight} from '@styled-icons/feather/ChevronRight'
 import styled from 'styled-components'
 import {Plus} from '@styled-icons/feather/Plus'
+import {Circle} from '@styled-icons/feather/Circle'
+import {CheckCircle} from '@styled-icons/feather/CheckCircle'
 
 import {X} from '@styled-icons/feather/X'
 
@@ -17,6 +19,16 @@ export const WhitePlus = styled(Plus)`
     font-weight: 600;
 `
 export const WhiteX = styled(X)`
+    color: #ffffff;
+    height: 25px;
+    font-weight: 600;
+`
+export const EmptyCircle = styled(Circle)`
+    color: #ffffff;
+    height: 25px;
+    font-weight: 600;
+`
+export const WhiteCheckCircle = styled(CheckCircle)`
     color: #ffffff;
     height: 25px;
     font-weight: 600;
