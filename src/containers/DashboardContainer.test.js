@@ -60,3 +60,12 @@ test("removes Black beans from search", () => {
 
 })
 
+test("add Black beans changes one empty circle to full circle", ()=>{
+    expect(component.queryAllByText("unchecked Beans serving").length).toEqual(3)
+    expect(component.queryAllByText("checked Beans serving").length).toEqual(0)
+    fireEvent.click(component.getByText("Beans"))
+    fireEvent.click(component.getByText("Add Black beans to search"))
+    expect(component.queryAllByText("unchecked Beans serving").length).toEqual(2)
+    expect(component.queryAllByText("checked Beans serving").length).toEqual(1)
+})
+
