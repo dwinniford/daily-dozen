@@ -124,6 +124,7 @@ export const SearchDropDown = styled.ul`
     color: black;
     width: 100%;
     text-align: right;
+    padding: 0;
 `
 export const DropDownItem = styled.li`
     list-style-type: none;

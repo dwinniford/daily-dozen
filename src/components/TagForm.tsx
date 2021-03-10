@@ -1,6 +1,7 @@
 import React from 'react'
 import {LabelInputForm, FormInput, FormLabel, 
     DropDownContainer, SearchDropDown, AddButton, DropDownItem} from '../style/dashboard'
+import {WhitePlus} from '../style/icons'
 import {connect} from 'react-redux'
 
 
@@ -31,7 +32,7 @@ function TagForm(props: TagFormProps ) {
             <DropDownContainer>
                 <FormInput onKeyUp={(event: FormEvent) => handleInputKeyUp(event)} type="text" name="tag" ></FormInput>
                 <SearchDropDown>
-                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}>+</AddButton> </DropDownItem>)}
+                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t} to tags`} /></AddButton> </DropDownItem>)}
                 </SearchDropDown>
             </DropDownContainer>
         </LabelInputForm> 
