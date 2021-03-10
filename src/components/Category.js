@@ -8,7 +8,7 @@ import {EmptyCircle, WhiteCheckCircle} from '../style/icons'
 export default function Category(props) {
     const [display, toggleDisplay] = useState(false)
     const renderTypes = () => {
-        return <TypesCard addIngredient={props.addIngredient} types={props.category.types} />
+        return <TypesCard addIngredient={props.addIngredient} types={props.category.types} parent={props.category.name} />
     }
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)
