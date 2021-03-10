@@ -3,8 +3,12 @@ import {connect} from 'react-redux'
 import {ListItem} from '../style/dashboard'
 import TagForm from './TagForm'
 
-function RecipeTags(props) {
-    
+type RecipeTagsProps = {recipe: {tags: string[]}, searchIngredients: string[]}
+
+type StateProps = {builder: {ingredients: string[]}}
+
+function RecipeTags(props: RecipeTagsProps) {
+    // what is going on here??? why the two return possibilities
     const tags = () => {
         if(props.recipe.tags) {
             return props.recipe.tags
@@ -20,7 +24,7 @@ function RecipeTags(props) {
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: StateProps) => {
     return {
         searchIngredients: state.builder.ingredients 
     }
