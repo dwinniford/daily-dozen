@@ -6,8 +6,8 @@ import {TypesGrid, ListItem, AddButton, SearchResultsGrid, DashboardBlock} from 
 import {WhiteX} from '../style/icons'
 import RecipeCard from './RecipeCard.js'
 
-
-function Search(props: {removeIngredient: Function, search: Function, ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]}) {
+type SearchProps = {removeIngredient: Function, search: Function, ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]}
+function Search(props: SearchProps) {
     const handleRemoveIngredient = (ingredient: string) => {
         props.removeIngredient(ingredient)
     }
