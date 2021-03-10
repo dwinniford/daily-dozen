@@ -17,7 +17,7 @@ function TagForm(props: TagFormProps ) {
     
     
     const handleInputKeyUp = (event: FormEvent) => {
-        console.log(event.target.value)
+        // console.log(event)
         props.searchTags(event.target.value)
     }
 
@@ -28,9 +28,12 @@ function TagForm(props: TagFormProps ) {
 
     return (
         <LabelInputForm>
-            <FormLabel htmlFor="name">enter a tag</FormLabel>
+            
             <DropDownContainer>
-                <FormInput onKeyUp={(event: FormEvent) => handleInputKeyUp(event)} type="text" name="tag" ></FormInput>
+            <FormLabel >
+                enter a tag
+                <FormInput onKeyUp={(event: FormEvent) => handleInputKeyUp(event)} type="text" name="tag"  ></FormInput>
+            </FormLabel>
                 <SearchDropDown>
                     {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t} to tags`} /></AddButton> </DropDownItem>)}
                 </SearchDropDown>
