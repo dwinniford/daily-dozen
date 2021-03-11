@@ -4,7 +4,7 @@ import './App.css';
 import Home  from './components/Home.js'
 import About from './components/About.js'
 import {BackgroundOverlay} from './style/base.js'
-import NavBar from './components/NavBar.js'
+import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
 
 function App() {
