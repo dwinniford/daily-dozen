@@ -5,7 +5,9 @@ import {WhiteChevronRight} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
 
-export default function RecipeCard(props) {
+type RecipeCardProps = {recipe: {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}}
+
+export default function RecipeCard(props: RecipeCardProps) {
     
     const [display, toggleDisplay] = useState(false)
     const handleToggle = () => {
@@ -23,7 +25,7 @@ export default function RecipeCard(props) {
             <Subtitle>
                 {props.recipe.label}
             </Subtitle>
-            <ExpandButton onClick={(event) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
+            <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
             {display? <RecipeInfoCard recipe={props.recipe} expand={true} /> : <RecipeInfoCard recipe={props.recipe} expand={false} /> }
         </CardHolder>
     )

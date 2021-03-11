@@ -4,9 +4,10 @@ import {search} from '../redux/actions/search'
 import {Title, BlackButton} from '../style/base.js'
 import {TypesGrid, ListItem, AddButton, SearchResultsGrid, DashboardBlock} from "../style/dashboard.js"
 import {WhiteX} from '../style/icons'
-import RecipeCard from './RecipeCard.js'
+import RecipeCard from './RecipeCard'
 
-type SearchProps = {removeIngredient: Function, search: Function, ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: {label: string, source: string}}[]}
+type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
+type SearchProps = {removeIngredient: Function, search: Function, ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: RecipeProps}[]}
 function Search(props: SearchProps) {
     const handleRemoveIngredient = (ingObj: {parent: string, ingredient: string}) => {
         props.removeIngredient(ingObj)
@@ -29,7 +30,7 @@ function Search(props: SearchProps) {
     )
 }
 
-const mapStateToProps = (state: {builder: {ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: {label: string, source: string}}[]} }) => {
+const mapStateToProps = (state: {builder: {ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: RecipeProps}[]} }) => {
     return {
         ingredients: state.builder.ingredients,
         searchResults: state.builder.searchResults
