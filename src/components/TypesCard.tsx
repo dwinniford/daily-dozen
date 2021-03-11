@@ -6,7 +6,7 @@ type Props = {addIngredient: Function, types: any, parent: string}
 export default function TypesCard(props: Props) {
     const handleAdd = (name: string, parent: string) => {
         console.log("add", name, "from", parent)
-        props.addIngredient(name)
+        props.addIngredient(name, parent)
     }
     
     const renderTypes = () => {

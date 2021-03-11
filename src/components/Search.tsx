@@ -6,10 +6,10 @@ import {TypesGrid, ListItem, AddButton, SearchResultsGrid, DashboardBlock} from 
 import {WhiteX} from '../style/icons'
 import RecipeCard from './RecipeCard.js'
 
-type SearchProps = {removeIngredient: Function, search: Function, ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]}
+type SearchProps = {removeIngredient: Function, search: Function, ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: {label: string, source: string}}[]}
 function Search(props: SearchProps) {
-    const handleRemoveIngredient = (ingredient: string) => {
-        props.removeIngredient(ingredient)
+    const handleRemoveIngredient = (ingObj: {parent: string, ingredient: string}) => {
+        props.removeIngredient(ingObj)
     }
     const handleSearch = (event: {}) => {
         props.search(props.ingredients)
@@ -19,7 +19,7 @@ function Search(props: SearchProps) {
         <DashboardBlock>
             <Title>Find a Recipe</Title>
                 <TypesGrid>
-                    {props.ingredients.map(i => <ListItem key={i}>{i}<AddButton onClick={(event: {}) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i}`} /></AddButton></ListItem>)}
+                    {props.ingredients.map(i => <ListItem key={i.parent + "-" + i.ingredient }>{i.ingredient}<AddButton onClick={(event: {}) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i}`} /></AddButton></ListItem>)}
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
@@ -29,7 +29,7 @@ function Search(props: SearchProps) {
     )
 }
 
-const mapStateToProps = (state: {builder: {ingredients: string[], searchResults: {recipe: {label: string, source: string}}[]} }) => {
+const mapStateToProps = (state: {builder: {ingredients: {parent: string, ingredient: string}[], searchResults: {recipe: {label: string, source: string}}[]} }) => {
     return {
         ingredients: state.builder.ingredients,
         searchResults: state.builder.searchResults
@@ -38,7 +38,7 @@ const mapStateToProps = (state: {builder: {ingredients: string[], searchResults:
 const mapDispatchToProps = (dispatch: Function) => {
     return {
         search: (ingredients: string[]) => dispatch(search(ingredients)),
-        removeIngredient: (ingredient: string) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
+        removeIngredient: (ingObj: {ingredient: string, parent: string}) => dispatch({type: "REMOVE_INGREDIENT", ingObj})
     }
 }
 

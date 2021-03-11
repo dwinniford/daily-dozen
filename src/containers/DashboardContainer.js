@@ -37,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addIngredient: (ingredient) => dispatch({type: "ADD_INGREDIENT", ingredient}),
+        addIngredient: (ingredient, parent) => dispatch({type: "ADD_INGREDIENT", ingredient, parent}),
         removeIngredient: (ingredient) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
     }
 }

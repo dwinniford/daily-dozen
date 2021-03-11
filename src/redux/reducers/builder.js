@@ -13,7 +13,7 @@ export default function builder(state = initialState, action) {
     switch(action.type) {
         case "ADD_INGREDIENT":
             const categoriesAdd = state.categories.map(cat => {
-                if (cat.types.includes(action.ingredient)) {
+                if (cat.name === action.parent) {
                     return {
                         ...cat, servings: {
                             ...cat.servings,
@@ -25,10 +25,10 @@ export default function builder(state = initialState, action) {
                     return cat
                 }
             })
-            return {...state, categories: categoriesAdd, ingredients: [...state.ingredients, action.ingredient]};
+            return {...state, categories: categoriesAdd, ingredients: [...state.ingredients, {ingredient: action.ingredient, parent: action.parent}]};
         case "REMOVE_INGREDIENT":
             const categoriesRemove = state.categories.map(cat => {
-                if (cat.types.includes(action.ingredient)) {
+                if (cat.name === action.ingObj.parent) {
                     return {
                         ...cat, servings: {
                             ...cat.servings,
@@ -40,7 +40,8 @@ export default function builder(state = initialState, action) {
                     return cat
                 }
             })
-            return {...state, categories: categoriesRemove, ingredients: state.ingredients.filter(i => i !== action.ingredient)}
+            // if matches parent, check if also matches ingredient
+            return {...state, categories: categoriesRemove, ingredients: state.ingredients.filter(({ingredient, parent}) => parent !== action.ingObj.parent || ingredient !== action.ingObj.ingredient)}
         case "SEARCH_REQUEST":
             return state;
         case "SEARCH_SUCCESS":
