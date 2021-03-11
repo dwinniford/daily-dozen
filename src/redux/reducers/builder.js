@@ -58,8 +58,13 @@ export default function builder(state = initialState, action) {
                 state.categories.forEach(cat => {
                     let catResults = cat.types.filter( t => {
                         return t.includes(action.text)
+                    }).map((i) => { 
+                        return {parent: cat.name, ingredient: i}
                     })
-                    tagSearchResults.push(catResults)
+                    if(catResults.length > 0) {
+                        tagSearchResults.push(catResults)
+                    }
+                    
                 })
             }
             return {...state, tagSearchResults: tagSearchResults.flat()}

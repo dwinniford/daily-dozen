@@ -4,12 +4,12 @@ import {LabelInputForm, FormInput, FormLabel,
 import {WhitePlus} from '../style/icons'
 import {connect} from 'react-redux'
 
-
-type TagFormProps = {searchTags: Function, tagSearchResults: string[]}
+type IngObj = {parent: string, ingredient: string}
+type TagFormProps = {searchTags: Function, tagSearchResults: {parent: string, ingredient: string}[]}
 
 type FormEvent = {target: {value: string}, preventDefault: Function}
 
-type StateProps = {builder: {tagSearchResults: string[] }}
+type StateProps = {builder: {tagSearchResults: {parent: string, ingredient: string}[] }}
 
 
 
@@ -21,7 +21,7 @@ function TagForm(props: TagFormProps ) {
         props.searchTags(event.target.value)
     }
 
-    const handleAddTag = (event: FormEvent, t: string) => {
+    const handleAddTag = (event: FormEvent, t: IngObj) => {
         event.preventDefault()
         console.log("add tag - ", t)
     }
@@ -35,7 +35,7 @@ function TagForm(props: TagFormProps ) {
                 <FormInput onKeyUp={(event: FormEvent) => handleInputKeyUp(event)} type="text" name="tag"  ></FormInput>
             </FormLabel>
                 <SearchDropDown>
-                    {props.tagSearchResults.map(t => <DropDownItem key={t}>{t} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t} to tags`} /></AddButton> </DropDownItem>)}
+                    {props.tagSearchResults.map(t => <DropDownItem key={t.parent + "-" + t.ingredient } >{t.parent + "-" + t.ingredient} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t.ingredient} to tags`} /></AddButton> </DropDownItem>)}
                 </SearchDropDown>
             </DropDownContainer>
         </LabelInputForm> 
