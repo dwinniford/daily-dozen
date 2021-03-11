@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import {dailyDozenData} from '../data/dailyDozenData.js'
-import Category from '../components/Category.js'
+import Category from '../components/Category'
 import { connect } from 'react-redux'
 import Search from '../components/Search'
 import {DashboardGrid, DashboardBlock } from "../style/dashboard.js"
