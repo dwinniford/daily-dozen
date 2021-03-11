@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import './App.css';
-import Home  from './components/Home.js'
+import Home  from './components/Home'
 import About from './components/About.js'
 import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
