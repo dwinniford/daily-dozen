@@ -6,7 +6,8 @@ import Search from '../components/Search'
 import {DashboardGrid, DashboardBlock } from "../style/dashboard.js"
 import {Title} from '../style/base.js'
 
-class DashboardContainer extends Component {
+type DCProps = {categories: {name: string, types: string[], servings: {quantity: number, used: number}}[], addIngredient: Function }
+class DashboardContainer extends Component<DCProps> {
     
     renderCategories = () => {
         return this.props.categories.map(cat => <Category addIngredient={this.props.addIngredient} key={cat.name} category={cat} />)
@@ -29,16 +30,18 @@ class DashboardContainer extends Component {
     }
 }
 
-const mapStateToProps = state => {
+type StateType = {builder: {categories: {name: string, types: string[], servings: {quantity: number, used: number}}[]}}
+const mapStateToProps = (state: StateType) => {
     return {
         categories: state.builder.categories
     }
 }
 
-const mapDispatchToProps = dispatch => {
+type DispatchType = Function
+const mapDispatchToProps = (dispatch: DispatchType) => {
     return {
-        addIngredient: (ingredient, parent) => dispatch({type: "ADD_INGREDIENT", ingredient, parent}),
-        removeIngredient: (ingredient) => dispatch({type: "REMOVE_INGREDIENT", ingredient})
+        addIngredient: (ingredient: string, parent: string) => dispatch({type: "ADD_INGREDIENT", ingredient, parent})
+        
     }
 }
 
