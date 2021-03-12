@@ -4,11 +4,11 @@ import TypesCard from './TypesCard'
 import {CategoryHead } from '../style/dashboard.js'
 import {EmptyCircle, WhiteCheckCircle} from '../style/icons'
 
-type CategoryProps = {addIngredient: Function, category: {name: string, types: string[], servings: {quantity: number, used: number}}}
+type CategoryProps = { category: {name: string, types: string[], servings: {quantity: number, used: number}}}
 export default function Category(props: CategoryProps) {
     const [display, toggleDisplay] = useState(false)
     const renderTypes = () => {
-        return <TypesCard addIngredient={props.addIngredient} types={props.category.types} parent={props.category.name} />
+        return <TypesCard types={props.category.types} parent={props.category.name} />
     }
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)

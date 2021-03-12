@@ -6,11 +6,11 @@ import Search from '../components/Search'
 import {DashboardGrid, DashboardBlock } from "../style/dashboard.js"
 import {Title} from '../style/base.js'
 
-type DCProps = {categories: {name: string, types: string[], servings: {quantity: number, used: number}}[], addIngredient: Function }
+type DCProps = {categories: {name: string, types: string[], servings: {quantity: number, used: number}}[] }
 class DashboardContainer extends Component<DCProps> {
     
     renderCategories = () => {
-        return this.props.categories.map(cat => <Category addIngredient={this.props.addIngredient} key={cat.name} category={cat} />)
+        return this.props.categories.map(cat => <Category key={cat.name} category={cat} />)
     }
 
     render() {
@@ -37,12 +37,5 @@ const mapStateToProps = (state: StateType) => {
     }
 }
 
-type DispatchType = Function
-const mapDispatchToProps = (dispatch: DispatchType) => {
-    return {
-        addIngredient: (ingredient: string, parent: string) => dispatch({type: "ADD_INGREDIENT", ingredient, parent})
-        
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
+export default connect(mapStateToProps)(DashboardContainer)
