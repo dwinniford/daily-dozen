@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
+import { connect } from 'react-redux'
 import { Subtitle, ExpandButton, PositionTopRight} from '../style/base.js'
 import {CardHolder} from '../style/dashboard'
 import {WhiteChevronRight, WhitePlus} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
 
-type RecipeCardProps = {recipe: {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}}
+type RecipeType = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
+type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function }
 
-export default function RecipeCard(props: RecipeCardProps) {
+function RecipeCard(props: RecipeCardProps) {
     
     const [display, toggleDisplay] = useState(false)
     const handleToggle = () => {
@@ -23,6 +25,7 @@ export default function RecipeCard(props: RecipeCardProps) {
 
     const handleAddToMealPlan = () => {
         console.log("add to meal plan ", props.recipe)
+        props.addToMealPlan(props.recipe)
     }
 
     return (
@@ -39,3 +42,11 @@ export default function RecipeCard(props: RecipeCardProps) {
         </CardHolder>
     )
 }
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        addToMealPlan: (recipe: RecipeType) => dispatch({type: "ADD_TO_MEAL_PLAN", recipe})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(RecipeCard)
