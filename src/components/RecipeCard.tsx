@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { Subtitle, ExpandButton} from '../style/base.js'
+import { Subtitle, ExpandButton, PositionTopRight} from '../style/base.js'
 import {CardHolder} from '../style/dashboard'
-import {WhiteChevronRight} from '../style/icons'
+import {WhiteChevronRight, WhitePlus} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
 
@@ -25,7 +25,11 @@ export default function RecipeCard(props: RecipeCardProps) {
             <Subtitle>
                 {props.recipe.label}
             </Subtitle>
-            <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
+            <PositionTopRight>
+                <ExpandButton ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
+                <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
+            </PositionTopRight>
+            
             {display? <RecipeInfoCard recipe={props.recipe} expand={true} /> : <RecipeInfoCard recipe={props.recipe} expand={false} /> }
         </CardHolder>
     )

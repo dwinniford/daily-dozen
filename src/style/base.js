@@ -7,7 +7,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.h3`
     color: white;
     font-weight: 600;
-    margin-right: 2rem;
+    margin-right: 6rem;
 `
 
 export const BackgroundOverlay = styled.div`
@@ -69,12 +69,14 @@ export const BlackButton = styled.button`
     }
 `
 export const ExpandButton = styled(BlackButton)`
-    position: absolute;
-    top: 0;
-    right: 0;
     background: transparent;
     border: 0;
     outline: none;
+`
+export const PositionTopRight = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
 `
 
 export const ExternalLinkButton = styled.a`

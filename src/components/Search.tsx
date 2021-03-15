@@ -20,7 +20,10 @@ function Search(props: SearchProps) {
         <DashboardBlock>
             <Title>Find a Recipe</Title>
                 <TypesGrid>
-                    {props.ingredients.map(i => <ListItem key={i.parent + "-" + i.ingredient }>{i.ingredient}<AddButton onClick={(event: {}) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i.ingredient}`} /></AddButton></ListItem>)}
+                    {props.ingredients.map(i => <ListItem key={i.parent + "-" + i.ingredient }>
+                        {i.ingredient}
+                        <AddButton onClick={(event: {}) => handleRemoveIngredient(i)}><WhiteX title={`remove ${i.ingredient}`} /></AddButton>
+                        </ListItem>)}
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
