@@ -4,18 +4,18 @@ import {SearchResultsGrid} from '../style/dashboard'
 import RecipeCard from '../components/RecipeCard'
 
 type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
-type MealPlanProps = {mealPlan: RecipeProps[]}
+type MealPlanProps = {recipes: RecipeProps[]}
 function MealPlan(props: MealPlanProps) {
     return (
         <SearchResultsGrid>
-            {props.mealPlan.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} />)}
+            {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} />)}
         </SearchResultsGrid>
     )
 }
 
-const mapStateToProps = (state: {mealPlan: RecipeProps[]}) => {
+const mapStateToProps = (state: {mealPlan: {recipes: RecipeProps[]} }) => {
     return {
-        mealPlan: state.mealPlan
+        recipes: state.mealPlan.recipes
     }
 }
 
