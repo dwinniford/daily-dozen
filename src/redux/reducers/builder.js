@@ -12,6 +12,9 @@ const initialState = {
 export default function builder(state = initialState, action) {
     switch(action.type) {
         case "ADD_INGREDIENT":
+            if(state.ingredients.find((ing) => ing.parent === action.parent && ing.ingredient === action.ingredient)) {
+                return state
+            }
             const categoriesAdd = state.categories.map(cat => {
                 if (cat.name === action.parent) {
                     return {
