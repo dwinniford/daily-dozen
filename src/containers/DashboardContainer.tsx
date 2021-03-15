@@ -17,10 +17,9 @@ class DashboardContainer extends Component<DCProps> {
     render() {
         return (
             <DashboardGrid>
-                <DashboardBlock>
-                    <Title>Meal Plan</Title>
-                    <MealPlan></MealPlan>
-                </DashboardBlock>
+                
+                <MealPlan></MealPlan>
+                
                 <Search  />
                 <DashboardBlock>
                     <Title>Daily Dozen</Title>

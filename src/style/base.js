@@ -106,3 +106,7 @@ export const ExternalLink = styled.a`
     line-height: 1.25;
     display: block;
 `
+
+export const MessageHolder = styled.p`
+    color: #fff
+`
