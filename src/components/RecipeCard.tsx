@@ -20,13 +20,18 @@ export default function RecipeCard(props: RecipeCardProps) {
     const chevron = () => {
         return display ? <WhiteChevronRight down="true" title="collapse recipe"/> : <WhiteChevronRight title="expand recipe" />
     }
+
+    const handleAddToMealPlan = () => {
+        console.log("add to meal plan ", props.recipe)
+    }
+
     return (
         <CardHolder>
             <Subtitle>
                 {props.recipe.label}
             </Subtitle>
             <PositionTopRight>
-                <ExpandButton ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
+                <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
                 <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
             </PositionTopRight>
             
