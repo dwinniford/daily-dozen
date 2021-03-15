@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Search from '../components/Search'
 import {DashboardGrid, DashboardBlock } from "../style/dashboard.js"
 import {Title} from '../style/base.js'
+import MealPlan from './MealPlan'
 
 type DCProps = {categories: {name: string, types: string[], servings: {quantity: number, used: number}}[] }
 class DashboardContainer extends Component<DCProps> {
@@ -18,6 +19,7 @@ class DashboardContainer extends Component<DCProps> {
             <DashboardGrid>
                 <DashboardBlock>
                     <Title>Meal Plan</Title>
+                    <MealPlan></MealPlan>
                 </DashboardBlock>
                 <Search  />
                 <DashboardBlock>
