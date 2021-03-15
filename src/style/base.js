@@ -108,5 +108,7 @@ export const ExternalLink = styled.a`
 `
 
 export const MessageHolder = styled.p`
-    color: #fff
+    color: #fff;
+    transition: opacity .5s ease;
+    opacity: ${(props) => parseInt(props.opacity)};
 `
