@@ -25,7 +25,7 @@ function MealPlan(props: MealPlanProps) {
             <Title>Meal Plan</Title>
             <MessageHolder opacity={opacity}>{props.message}</MessageHolder>
             <SearchResultsGrid>
-                {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} />)}
+                {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} inMealPlan={true} />)}
             </SearchResultsGrid>
         </ DashboardBlock>
     )

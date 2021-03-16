@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { Subtitle, ExpandButton, PositionTopRight} from '../style/base.js'
 import {CardHolder} from '../style/dashboard'
-import {WhiteChevronRight, WhitePlus} from '../style/icons'
+import {WhiteChevronRight, WhitePlus, WhiteX} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
 
 type RecipeType = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
-type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function }
+type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function, inMealPlan: boolean }
 
 function RecipeCard(props: RecipeCardProps) {
     
@@ -28,13 +28,21 @@ function RecipeCard(props: RecipeCardProps) {
         props.addToMealPlan(props.recipe)
     }
 
+    const addOrX = () => {
+        if(props.inMealPlan) {
+            return <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhiteX title={`remove ${props.recipe.label} from Meal Plan`} /></ExpandButton>
+        } else {
+            return <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
+        }
+    }
+
     return (
         <CardHolder>
             <Subtitle>
                 {props.recipe.label}
             </Subtitle>
             <PositionTopRight>
-                <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
+                {addOrX()}
                 <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
             </PositionTopRight>
             

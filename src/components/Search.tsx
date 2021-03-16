@@ -27,7 +27,7 @@ function Search(props: SearchProps) {
                 </TypesGrid>
             <BlackButton onClick={handleSearch}>Search</BlackButton>
             <SearchResultsGrid>
-                {props.searchResults.map(r => <RecipeCard key={r.recipe.label+"-"+r.recipe.source} recipe={r.recipe} />)}
+                {props.searchResults.map(r => <RecipeCard key={r.recipe.label+"-"+r.recipe.source} recipe={r.recipe} inMealPlan={false} />)}
             </SearchResultsGrid>
         </DashboardBlock>
     )
