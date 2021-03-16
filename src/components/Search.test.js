@@ -46,7 +46,7 @@ describe('Recipe card expands and collapses', () => {
 
     test('recipe details are visible after expand', () => {
         // console.log(component.getAllByRole('img')[0])
-        fireEvent.click(component.getAllByRole('img')[0])
+        fireEvent.click(component.getAllByText('expand recipe')[0])
         expect(component.queryAllByText("Ingredients")[0]).toBeVisible()
     })
     // try moving this test to RecipeInfoCard
