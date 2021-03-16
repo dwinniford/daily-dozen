@@ -69,3 +69,10 @@ test("add Black beans changes one empty circle to full circle", ()=>{
     expect(component.queryAllByText("checked Beans serving").length).toEqual(1)
 })
 
+test("Add Black Eyed Peas adds to meal plan list", () => {
+    expect(component.getByText("add Black Eyed Peas to Meal Plan")).toBeInTheDocument()
+    expect(component.queryByText("remove Black Eyed Peas from Meal Plan")).not.toBeInTheDocument()
+    fireEvent.click(component.getByText("add Black Eyed Peas to Meal Plan"))
+    expect(component.queryByText("remove Black Eyed Peas from Meal Plan")).toBeInTheDocument()
+})
+

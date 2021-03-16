@@ -24,7 +24,7 @@ function RecipeCard(props: RecipeCardProps) {
     }
 
     const handleAddToMealPlan = () => {
-        console.log("add to meal plan ", props.recipe)
+        // console.log("add to meal plan ", props.recipe)
         props.addToMealPlan(props.recipe)
     }
 
