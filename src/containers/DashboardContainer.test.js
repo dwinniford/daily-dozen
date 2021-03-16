@@ -76,3 +76,10 @@ test("Add Black Eyed Peas adds to meal plan list", () => {
     expect(component.queryByText("remove Black Eyed Peas from Meal Plan")).toBeInTheDocument()
 })
 
+test("Remove Black Eyed Peas removes from meal plan list", () => {
+    expect(component.getByText("add Black Eyed Peas to Meal Plan")).toBeInTheDocument()
+    fireEvent.click(component.getByText("add Black Eyed Peas to Meal Plan"))
+    expect(component.queryByText("remove Black Eyed Peas from Meal Plan")).toBeInTheDocument()
+    fireEvent.click(component.getByText("remove Black Eyed Peas from Meal Plan"))
+    expect(component.queryByText("remove Black Eyed Peas from Meal Plan")).not.toBeInTheDocument()
+})
