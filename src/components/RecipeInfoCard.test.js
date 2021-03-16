@@ -1,4 +1,4 @@
-import RecipeInfoCard from './RecipeInfoCard.js'
+import RecipeInfoCard from './RecipeInfoCard'
 import React from 'react'
 
 import {unmountComponentAtNode} from 'react-dom'

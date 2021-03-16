@@ -8,7 +8,8 @@ export default function mealPlan(state = initialState, action) {
             } else {
                 return {...state, message: `${action.recipe.label} cannot be added to the Meal Plan twice.`}
             }
-            
+        case 'REMOVE_FROM_MEAL_PLAN':
+            return {...state, recipes: state.recipes.filter((r)=> r.url !== action.url)}    
         default:
             return state;
     }

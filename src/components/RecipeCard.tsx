@@ -7,7 +7,7 @@ import {WhiteChevronRight, WhitePlus, WhiteX} from '../style/icons'
 import RecipeInfoCard from './RecipeInfoCard'
 
 type RecipeType = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
-type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function, inMealPlan: boolean }
+type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function, inMealPlan: boolean, removeFromMealPlan: Function }
 
 function RecipeCard(props: RecipeCardProps) {
     
@@ -28,9 +28,13 @@ function RecipeCard(props: RecipeCardProps) {
         props.addToMealPlan(props.recipe)
     }
 
+    const handleRemoveFromMealPlan = () => {
+        props.removeFromMealPlan(props.recipe.url)
+    }
+
     const addOrX = () => {
         if(props.inMealPlan) {
-            return <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhiteX title={`remove ${props.recipe.label} from Meal Plan`} /></ExpandButton>
+            return <ExpandButton onClick={(event: {}) => handleRemoveFromMealPlan()} ><WhiteX title={`remove ${props.recipe.label} from Meal Plan`} /></ExpandButton>
         } else {
             return <ExpandButton onClick={(event: {}) => handleAddToMealPlan()} ><WhitePlus title={`add ${props.recipe.label} to Meal Plan`} /></ExpandButton>
         }
@@ -53,7 +57,8 @@ function RecipeCard(props: RecipeCardProps) {
 
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        addToMealPlan: (recipe: RecipeType) => dispatch({type: "ADD_TO_MEAL_PLAN", recipe})
+        addToMealPlan: (recipe: RecipeType) => dispatch({type: "ADD_TO_MEAL_PLAN", recipe}),
+        removeFromMealPlan: (url: string) => dispatch({type: "REMOVE_FROM_MEAL_PLAN", url})
     }
 }
 
