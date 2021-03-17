@@ -3,7 +3,12 @@ import {ListItem, CollapseHolder, CollapseInner, RecipeImg} from '../style/dashb
 import { BlackButton, ExternalLink} from '../style/base.js'
 import RecipeTags from './RecipeTags'
 
-type RecipeInfoCardProps = {recipe: {ingredientLines: string[], tags: {parent: string, ingredient: string}[], url: string, source: string, image: string, label: string }, expand: boolean }
+
+type RecipeInfoCardProps = {
+    recipe: {ingredientLines: string[], tags: {parent: string, ingredient: string}[], url: string, source: string, image: string, label: string }, 
+    expand: boolean,
+    inMealPlan: boolean 
+}
 
 export default function RecipeInfoCard(props: RecipeInfoCardProps) {
     const innerRef: any = useRef(null)
@@ -61,7 +66,7 @@ export default function RecipeInfoCard(props: RecipeInfoCardProps) {
                 <RecipeImg src={props.recipe.image} alt={props.recipe.label} />
                 
                 <BlackButton onClick={(event: {}) => tabClick(event, "Ingredients")}>Ingredients</BlackButton>
-                <BlackButton onClick={(event: {}) => tabClick(event, "Tags")}>Tags</BlackButton>
+                { props.inMealPlan ? <BlackButton onClick={(event: {}) => tabClick(event, "Tags")}>Tags</BlackButton> : null }
                 {/* {renderIngredients()} */}
                 {displayTab()}
             </CollapseInner>

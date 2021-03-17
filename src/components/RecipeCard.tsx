@@ -50,7 +50,7 @@ function RecipeCard(props: RecipeCardProps) {
                 <ExpandButton onClick={(event: {}) => handleToggle()} key={props.recipe.label+"-"+props.recipe.source}> {chevron()}</ExpandButton>
             </PositionTopRight>
             
-            {display? <RecipeInfoCard recipe={props.recipe} expand={true} /> : <RecipeInfoCard recipe={props.recipe} expand={false} /> }
+            {display? <RecipeInfoCard recipe={props.recipe} expand={true} inMealPlan={props.inMealPlan} /> : <RecipeInfoCard recipe={props.recipe} expand={false} inMealPlan={props.inMealPlan} /> }
         </CardHolder>
     )
 }

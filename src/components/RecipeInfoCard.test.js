@@ -15,7 +15,7 @@ let component = null
 beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
-    component = render(<Provider store={store} ><RecipeInfoCard expand={true} recipe={searchResults[0].recipe} /></Provider>, container)
+    component = render(<Provider store={store} ><RecipeInfoCard expand={true} recipe={searchResults[0].recipe} inMealPlan={true} /></Provider>, container)
 })
 
 afterEach(() => {
