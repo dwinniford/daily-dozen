@@ -9,7 +9,19 @@ export default function mealPlan(state = initialState, action) {
                 return {...state, message: `${action.recipe.label} cannot be added to the Meal Plan twice.`}
             }
         case 'REMOVE_FROM_MEAL_PLAN':
-            return {...state, recipes: state.recipes.filter((r)=> r.url !== action.url)}    
+            return {...state, recipes: state.recipes.filter((r)=> r.url !== action.url)}
+        case 'ADD_TAG':
+            return {...state, recipes: state.recipes.map((r) => {
+                    if(action.url === r.url) {
+                        let updatedTags = r.tags || []
+                        updatedTags.push(action.tag)
+                        return {...r, tags: updatedTags}
+                    } else {
+                        return r
+                    }
+                    
+                })
+            }    
         default:
             return state;
     }

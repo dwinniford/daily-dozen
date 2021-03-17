@@ -5,7 +5,7 @@ import {WhitePlus} from '../style/icons'
 import {connect} from 'react-redux'
 
 type IngObj = {parent: string, ingredient: string}
-type TagFormProps = {searchTags: Function, tagSearchResults: {parent: string, ingredient: string}[]}
+type TagFormProps = {searchTags: Function, tagSearchResults: {parent: string, ingredient: string}[], recipeUrl: string, addTag: Function}
 
 type FormEvent = {target: {value: string}, preventDefault: Function}
 
@@ -24,6 +24,7 @@ function TagForm(props: TagFormProps ) {
     const handleAddTag = (event: FormEvent, t: IngObj) => {
         event.preventDefault()
         console.log("add tag - ", t)
+        props.addTag(props.recipeUrl, t)
     }
 
     return (
@@ -49,7 +50,8 @@ const mapStateToProps = (state: StateProps) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        searchTags: (text: string) => dispatch({type: "SEARCH_TAGS", text})
+        searchTags: (text: string) => dispatch({type: "SEARCH_TAGS", text}),
+        addTag: (url: string, tag: {parent: string, ingredient: string}) => dispatch({type: "ADD_TAG", url, tag})
     }
 }
 
