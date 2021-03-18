@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import {BlackButton} from '../style/base.js'
 import TypesCard from './TypesCard'
+import ServingCounter from './ServingCounter'
 import {CategoryHead } from '../style/dashboard.js'
 import {EmptyCircle, WhiteCheckCircle} from '../style/icons'
 
@@ -37,7 +38,7 @@ export default function Category(props: CategoryProps) {
             <div>
             {servings()}
             </div>
-            
+            <ServingCounter parent={props.category.name} servingQuantity={props.category.servings.quantity}/>
             </CategoryHead>
             {display ? renderTypes() : null}
         </div>
