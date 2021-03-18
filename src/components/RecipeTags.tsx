@@ -8,12 +8,12 @@ type RecipeTagsProps = {recipe: {tags: {parent: string, ingredient: string }[], 
 type StateProps = {builder: {ingredients: {parent: string, ingredient: string }[]}}
 
 function RecipeTags(props: RecipeTagsProps) {
-    // what is going on here??? why the two return possibilities
+    // check if tags array exists
     const tags = () => {
         if(props.recipe.tags) {
             return props.recipe.tags
         } else {
-            return props.searchIngredients
+            return []
         }
     }
     return (

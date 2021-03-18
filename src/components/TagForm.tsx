@@ -24,7 +24,7 @@ function TagForm(props: TagFormProps ) {
     const handleAddTag = (event: FormEvent, t: IngObj) => {
         event.preventDefault()
         console.log("add tag - ", t)
-        props.addTag(props.recipeUrl, t)
+        props.addTag(props.recipeUrl, {...t, recipeUrl: props.recipeUrl})
     }
 
     return (
