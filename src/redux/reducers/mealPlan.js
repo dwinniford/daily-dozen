@@ -11,8 +11,8 @@ export default function mealPlan(state = initialState, action) {
         case 'REMOVE_FROM_MEAL_PLAN':
             return {...state, recipes: state.recipes.filter((r)=> r.url !== action.url)}
         case 'ADD_TAG':
-            let newTags = state.tags
-            newTags.push(action.tag)
+            // let newTags = state.tags
+            // newTags.push(action.tag)
             return {...state, recipes: state.recipes.map((r) => {
                     if(action.url === r.url) {
                         let updatedTags = r.tags || []
@@ -23,7 +23,8 @@ export default function mealPlan(state = initialState, action) {
                     }
                     
                 }),
-                tags: newTags
+                // tags: newTags
+                tags: [...state['tags'], action.tag]
             }    
         default:
             return state;
