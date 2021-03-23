@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {ListItem} from '../style/dashboard'
 import TagForm from './TagForm'
+import TagItem from './TagItem'
 
 type RecipeTagsProps = {
     recipe: {tags: {parent: string, ingredient: string }[], url: string}, 
@@ -19,7 +19,7 @@ function RecipeTags(props: RecipeTagsProps) {
     return (
         <div>
             <TagForm recipeUrl={props.recipe.url}></TagForm>
-            {tags().map(t => <ListItem key={t.parent + "-" + t.ingredient}>{t.parent + " - " + t.ingredient }</ListItem>)}
+            {tags().map(t => <TagItem tag={t} key={t.parent + "-" + t.ingredient}></TagItem>)}
         </div>
     )
 }
