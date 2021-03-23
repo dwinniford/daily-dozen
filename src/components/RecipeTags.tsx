@@ -6,10 +6,10 @@ import TagItem from './TagItem'
 type RecipeTagsProps = {
     recipe: {tags: {parent: string, ingredient: string }[], url: string}, 
     searchIngredients: {parent: string, ingredient: string }[], 
-    tags: {recipeUrl: string, parent:string, ingredient: string}[]
+    tags: {recipeUrl: string, parent:string, ingredient: string, servings: number}[]
 }
 
-type StateProps = {builder: {ingredients: {parent: string, ingredient: string }[]}, mealPlan: {tags: {recipeUrl: string, parent: string, ingredient: string}[]}}
+type StateProps = {builder: {ingredients: {parent: string, ingredient: string }[]}, mealPlan: {tags: {recipeUrl: string, parent: string, ingredient: string, servings: number}[]}}
 
 function RecipeTags(props: RecipeTagsProps) {
     // check if tags array exists
