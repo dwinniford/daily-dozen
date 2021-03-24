@@ -41,7 +41,7 @@ export default function RecipeInfoCard(props: RecipeInfoCardProps) {
     }
     
     return (
-            <UnmountClosed isOpened={props.expand}>
+            <UnmountClosed isOpened={props.expand} initialStyle={{height: '0px', overflow: 'hidden'}} >
                 <ExternalLink href={props.recipe.url}>
                     from {props.recipe.source}
                 </ExternalLink>
