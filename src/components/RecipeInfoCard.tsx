@@ -63,10 +63,15 @@ export default function RecipeInfoCard(props: RecipeInfoCardProps) {
                 <ExternalLink href={props.recipe.url}>
                     from {props.recipe.source}
                 </ExternalLink>
-                <RecipeImg src={props.recipe.image} alt={props.recipe.label} />
+                <div>
+                    <RecipeImg src={props.recipe.image} alt={props.recipe.label} />
+                </div>
                 
-                <BlackButton onClick={(event: {}) => tabClick(event, "Ingredients")}>Ingredients</BlackButton>
-                { props.inMealPlan ? <BlackButton onClick={(event: {}) => tabClick(event, "Tags")}>Tags</BlackButton> : null }
+                <div>
+                    <BlackButton onClick={(event: {}) => tabClick(event, "Ingredients")}>Ingredients</BlackButton>
+                    { props.inMealPlan ? <BlackButton onClick={(event: {}) => tabClick(event, "Tags")}>Tags</BlackButton> : null }
+                </div>
+
                 {/* {renderIngredients()} */}
                 {displayTab()}
             </CollapseInner>

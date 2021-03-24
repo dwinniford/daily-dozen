@@ -120,6 +120,7 @@ export const DropDownContainer = styled.div`
 
 export const SearchDropDown = styled.ul`
     position: absolute;
+    bottom: 2rem;
     background: white;
     color: black;
     width: 100%;
@@ -143,5 +144,5 @@ export const CollapseInner = styled.div`
     height: auto;
 `
 export const RecipeImg = styled.img`
-    height: 300px;
+    height: 200px;
 `

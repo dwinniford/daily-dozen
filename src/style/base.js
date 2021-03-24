@@ -49,6 +49,7 @@ export const BlackButton = styled.button`
     border: none;
     padding: 1rem 1rem;
     margin: 0;
+    margin-right: .5rem;
     text-decoration: none;
     background: #23272b;
     color: #ffffff;
