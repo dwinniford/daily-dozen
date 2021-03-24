@@ -1,7 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react'
-import {ListItem, CollapseHolder, CollapseInner, RecipeImg} from '../style/dashboard'
+import React, {useState} from 'react'
+import {ListItem, RecipeImg} from '../style/dashboard'
 import { BlackButton, ExternalLink} from '../style/base.js'
 import RecipeTags from './RecipeTags'
+import {UnmountClosed} from 'react-collapse'
 
 
 type RecipeInfoCardProps = {
@@ -11,25 +12,7 @@ type RecipeInfoCardProps = {
 }
 
 export default function RecipeInfoCard(props: RecipeInfoCardProps) {
-    const innerRef: any = useRef(null)
-    const [innerHeight, setInnerHeight] = useState(0)
-
-    useEffect(()=> {
-        let childrenHeight = 0
-        const childrenColl = innerRef.current.children
-        for (let index = 0; index < childrenColl.length; index++) {
-            childrenHeight += childrenColl[index].clientHeight
-        }
-        
-        // const childrenHeight = innerRef.current.children.map(function(i){
-        //     return i.clientHeight
-        // })
-        // console.log("perform side effect", innerRef.current.clientHeight, childrenColl, childrenHeight)
-        // set height prop on Collapse holder
-        // setInnerHeight(innerRef.current.offsetHeight)
-        setInnerHeight(childrenHeight)
-        //prevent infinite loop
-    }, [])
+    
 
     const [display, toggleDisplay] = useState("Ingredients")
     // const handleToggle = () => {
@@ -58,8 +41,7 @@ export default function RecipeInfoCard(props: RecipeInfoCardProps) {
     }
     
     return (
-        <CollapseHolder expand={props.expand} height={innerHeight}>
-            <CollapseInner ref={innerRef}>
+            <UnmountClosed isOpened={props.expand}>
                 <ExternalLink href={props.recipe.url}>
                     from {props.recipe.source}
                 </ExternalLink>
@@ -74,7 +56,6 @@ export default function RecipeInfoCard(props: RecipeInfoCardProps) {
 
                 {/* {renderIngredients()} */}
                 {displayTab()}
-            </CollapseInner>
-        </CollapseHolder>
+            </UnmountClosed>
     )
 }
