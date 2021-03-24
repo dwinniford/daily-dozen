@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Plus} from '@styled-icons/feather/Plus'
 import {Circle} from '@styled-icons/feather/Circle'
 import {CheckCircle} from '@styled-icons/feather/CheckCircle'
+import {Minus} from '@styled-icons/feather/Minus'
 
 import {X} from '@styled-icons/feather/X'
 
@@ -18,6 +19,12 @@ export const WhitePlus = styled(Plus)`
     height: 25px;
     font-weight: 600;
 `
+export const WhiteMinus = styled(Minus)`
+    color: #ffffff;
+    height: 25px;
+    font-weight: 600;
+`
+
 export const WhiteX = styled(X)`
     color: #ffffff;
     height: 25px;
