@@ -27,6 +27,18 @@ function TagForm(props: TagFormProps ) {
         props.addTag(props.recipeUrl, {...t, recipeUrl: props.recipeUrl, servings: 1})
     }
 
+    const results = () => {
+        if(props.tagSearchResults.length) {
+            return (
+                <SearchDropDown>
+                    {props.tagSearchResults.map(t => <DropDownItem key={t.parent + "-" + t.ingredient } >{t.parent + "-" + t.ingredient} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t.ingredient} to tags`} /></AddButton> </DropDownItem>)}
+                </SearchDropDown>
+            )
+        } else {
+            return null
+        }
+    }
+
     return (
         <LabelInputForm>
             
@@ -34,9 +46,7 @@ function TagForm(props: TagFormProps ) {
             <FormLabel >
                 <FormInput onKeyUp={(event: FormEvent) => handleInputKeyUp(event)} type="text" name="tag" placeholder="enter a tag"  ></FormInput>
             </FormLabel>
-                <SearchDropDown>
-                    {props.tagSearchResults.map(t => <DropDownItem key={t.parent + "-" + t.ingredient } >{t.parent + "-" + t.ingredient} <AddButton onClick={(e: FormEvent) => handleAddTag(e, t)}><WhitePlus title={`add ${t.ingredient} to tags`} /></AddButton> </DropDownItem>)}
-                </SearchDropDown>
+                {results()}
             </DropDownContainer>
         </LabelInputForm> 
     )
