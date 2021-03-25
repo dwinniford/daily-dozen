@@ -96,7 +96,7 @@ export const SearchResultsGrid = styled.div`
 export const LabelInputForm = styled.form`
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 5px;
     color: white;
     font-size: larger;
@@ -106,7 +106,8 @@ export const LabelInputForm = styled.form`
 export const FormInput = styled.input`
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    /* font-size: larger */
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
 `
 
 export const FormLabel = styled.label`
@@ -120,7 +121,7 @@ export const DropDownContainer = styled.div`
 
 export const SearchDropDown = styled.ul`
     position: absolute;
-    bottom: 2rem;
+    // bottom: 2rem;
     background: white;
     color: black;
     width: 100%;
