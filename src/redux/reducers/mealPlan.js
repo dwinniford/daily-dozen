@@ -15,13 +15,22 @@ export default function mealPlan(state = initialState, action) {
         case 'INCREMENT_TAG':
             const newTags = state.tags.map(t => {
                 if(t.recipeUrl === action.tag.recipeUrl && t.parent === action.tag.parent && t.ingredient === action.tag.ingredient) {
-                    console.log("about to increment")
                     return {...t, servings: t.servings + 1 }
                 } else {
                     return t
                 }
             })
             return {...state, tags: newTags}
+        case 'DECREMENT_TAG':
+            const newDecTags = state.tags.map(t => {
+                if(t.recipeUrl === action.tag.recipeUrl && t.parent === action.tag.parent && t.ingredient === action.tag.ingredient) {
+                    
+                    return {...t, servings: t.servings - 1 }
+                } else {
+                    return t
+                }
+            })
+            return {...state, tags: newDecTags}
         default:
             return state;
     }
