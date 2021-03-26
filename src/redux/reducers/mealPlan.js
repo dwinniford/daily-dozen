@@ -31,6 +31,15 @@ export default function mealPlan(state = initialState, action) {
                 }
             })
             return {...state, tags: newDecTags}
+        case 'REMOVE_TAG':
+            const newRemTagArr = state.tags.filter(t => {
+                if(t.recipeUrl === action.tag.recipeUrl && t.parent === action.tag.parent && t.ingredient === action.tag.ingredient) {
+                    return false
+                } else {
+                    return true
+                }
+            })
+            return {...state, tags: newRemTagArr }
         default:
             return state;
     }
