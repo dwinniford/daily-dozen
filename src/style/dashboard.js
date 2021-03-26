@@ -121,6 +121,7 @@ export const DropDownContainer = styled.div`
 
 export const SearchDropDown = styled.ul`
     position: absolute;
+    z-index: 1;
     // bottom: 2rem;
     background: white;
     color: black;
