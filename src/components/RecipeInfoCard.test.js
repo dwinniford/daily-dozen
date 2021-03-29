@@ -31,7 +31,7 @@ test("it displays an image from the recipe", ()=> {
 
 test("Tags button toggles tag input form", ()=> {
     expect(component.getByText("Tags")).toBeInTheDocument()
-    expect(component.queryByText('enter a tag')).not.toBeInTheDocument()
+    expect(component.queryByPlaceholderText('enter a tag')).not.toBeInTheDocument()
     fireEvent.click(component.getByText("Tags"))
-    expect(component.getByText('enter a tag')).toBeInTheDocument()
+    expect(component.getByPlaceholderText('enter a tag')).toBeInTheDocument()
 })

@@ -41,7 +41,8 @@ describe('Recipe card expands and collapses', () => {
     
     test('recipe card detail info is not visible before expand', ()=> {
         // how to test 
-        expect(component.queryAllByText("Ingredients")[0]).not.toBeVisible()
+        // expect(component.queryAllByText("Ingredients")[0]).not.toBeVisible()
+        expect(component.queryByText("Ingredients")).not.toBeInTheDocument()
     })
 
     test('recipe details are visible after expand', () => {

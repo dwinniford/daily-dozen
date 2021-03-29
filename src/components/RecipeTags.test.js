@@ -31,10 +31,10 @@ afterEach(() => {
 })
 
 test("typing p in the tag form causes dropdown of multiple search items to appear.", () => {
-    expect(component.getByText("enter a tag")).toBeInTheDocument()
-    expect(component.getByLabelText('enter a tag')).toBeInTheDocument()
-    fireEvent.keyDown(component.getByLabelText('enter a tag'), {key: "p", code: "keyP"})
-    fireEvent.keyUp(component.getByLabelText('enter a tag'), {key: "p", code: "keyP", target: { value: 'p' }})
+    expect(component.getByPlaceholderText("enter a tag")).toBeInTheDocument()
+    // expect(component.getByLabelText('enter a tag')).toBeInTheDocument()
+    fireEvent.keyDown(component.getByPlaceholderText('enter a tag'), {key: "p", code: "keyP"})
+    fireEvent.keyUp(component.getByPlaceholderText('enter a tag'), {key: "p", code: "keyP", target: { value: 'p' }})
     expect(component.getByText("add Black-eyed peas to tags")).toBeInTheDocument()
     
 })
