@@ -3,15 +3,14 @@ import {BlackButton} from '../style/base.js'
 import TypesCard from './TypesCard'
 import ServingCounter from './ServingCounter'
 import {CategoryHead } from '../style/dashboard.js'
+import {UnmountClosed} from 'react-collapse'
 
 
 
 type CategoryProps = { category: {name: string, types: string[], servings: {quantity: number, used: number}}}
 export default function Category(props: CategoryProps) {
     const [display, toggleDisplay] = useState(false)
-    const renderTypes = () => {
-        return <TypesCard types={props.category.types} parent={props.category.name} />
-    }
+    
     const handleToggle = () => {
         display ? toggleDisplay(false) : toggleDisplay(true)
     }
@@ -22,7 +21,9 @@ export default function Category(props: CategoryProps) {
             <BlackButton onClick={handleToggle}>{props.category.name} </BlackButton>
             <ServingCounter parent={props.category.name} servingQuantity={props.category.servings.quantity} />
             </CategoryHead>
-            {display ? renderTypes() : null}
+            <UnmountClosed isOpened={display} initialStyle={{height: '0px', overflow: 'hidden'}} >
+                <TypesCard types={props.category.types} parent={props.category.name} />
+            </UnmountClosed>
         </div>
     )
 }
