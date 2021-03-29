@@ -11,6 +11,10 @@ export default function mealPlan(state = initialState, action) {
         case 'REMOVE_FROM_MEAL_PLAN':
             return {...state, recipes: state.recipes.filter((r)=> r.url !== action.url)}
         case 'ADD_TAG':
+            // check if tag already exists and return state
+            if(state.tags.find(t => (t.recipeUrl === action.tag.recipeUrl && t.parent === action.tag.parent && t.ingredient === action.tag.ingredient))) {
+                return state
+            }
             return {...state, tags: [...state['tags'], action.tag]}    
         case 'INCREMENT_TAG':
             const newTags = state.tags.map(t => {
