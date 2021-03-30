@@ -9,8 +9,8 @@ import { Provider } from 'react-redux'
 import store from '../redux/store'
 import {searchResults} from '../redux/reducers/sampleSearch'
 
-let container = null 
-let component = null
+let container: any = null 
+let component: any = null
 
 beforeEach(() => {
     container = document.createElement('div')

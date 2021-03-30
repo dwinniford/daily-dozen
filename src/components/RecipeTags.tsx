@@ -4,7 +4,7 @@ import TagForm from './TagForm'
 import TagItem from './TagItem'
 
 type RecipeTagsProps = {
-    recipe: {tags: {parent: string, ingredient: string }[], url: string}, 
+    recipe: {url: string}, 
     searchIngredients: {parent: string, ingredient: string }[], 
     tags: {recipeUrl: string, parent:string, ingredient: string, servings: number}[]
 }

@@ -6,7 +6,7 @@ import {UnmountClosed} from 'react-collapse'
 
 
 type RecipeInfoCardProps = {
-    recipe: {ingredientLines: string[], tags: {parent: string, ingredient: string}[], url: string, source: string, image: string, label: string }, 
+    recipe: {ingredientLines: string[], url: string, source: string, image: string, label: string }, 
     expand: boolean,
     inMealPlan: boolean 
 }

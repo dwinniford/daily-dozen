@@ -4,8 +4,9 @@ import { render } from '@testing-library/react';
 import NavBar from './NavBar'
 import {BrowserRouter} from 'react-router-dom'
 
-let container = null 
-
+//  let container: Element | DocumentFragment | { container?: HTMLElement | undefined; baseElement?: HTMLElement | undefined; hydrate?: boolean | undefined; wrapper?: React.ComponentType<{}> | undefined; } | null | undefined = null 
+// let container: Element | DocumentFragment | null = null
+let container: any = null
 beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)

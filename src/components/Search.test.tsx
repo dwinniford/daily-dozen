@@ -7,9 +7,9 @@ import {render, fireEvent, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
 
-let container = null 
-let component = null
-let getByText = null
+let container: any = null 
+let component: any = null
+let getByText: any = null
 
 beforeEach(() => {
     container = document.createElement('div')
