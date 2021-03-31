@@ -1,6 +1,21 @@
-const initialState = {message: "", recipes: [], tags: []}
+type RecipeType = { url: string; label: string };
 
-export default function mealPlan(state = initialState, action) {
+type TagType = {recipeUrl: string; parent: string; ingredient: string; servings: number}
+
+type InitialStateType = {message: string; recipes: RecipeType[]; tags: TagType[];};
+
+const initialState: InitialStateType = {message: "", recipes: [], tags: []}
+
+type ActionType = 
+    | {type: "ADD_TO_MEAL_PLAN"; recipe: {url: string; label: string} }
+    | {type: "REMOVE_FROM_MEAL_PLAN"; url: string}
+    | {type: "ADD_TAG"; tag: TagType}
+    | {type: "INCREMENT_TAG"; tag: TagType}
+    | {type: "DECREMENT_TAG"; tag: TagType}
+    | {type: "REMOVE_TAG"; tag: TagType }
+
+
+export default function mealPlan(state = initialState, action: ActionType) {
     switch(action.type) {
         case 'ADD_TO_MEAL_PLAN':
             if(!state.recipes.find((recipe) => recipe.url === action.recipe.url)) {

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import builder from './builder.js'
-import mealPlan from './mealPlan.js'
+import builder from './builder'
+import mealPlan from './mealPlan'
 
 export const rootReducer = combineReducers({builder, mealPlan })

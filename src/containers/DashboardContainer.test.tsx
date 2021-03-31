@@ -12,8 +12,8 @@ import {rootReducer} from "../redux/reducers/rootReducer.js"
 
 
 
-let container = null 
-let component = null
+let container: any = null 
+let component: any = null
 let store = null
 
 beforeEach(() => {
