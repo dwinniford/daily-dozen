@@ -1,15 +1,31 @@
 import { dailyDozenData} from './dailyDozenData.js'
 import {searchResults} from './sampleSearch'
 
-const initialState = {
+type IngredientType = {parent: string, ingredient: string}
+
+type InitialStateType = {
+    categories: typeof dailyDozenData;
+    ingredients: IngredientType[];
+    searchResults: typeof searchResults;
+    tagSearchResults: IngredientType[]
+}
+
+const initialState: InitialStateType = {
     categories: dailyDozenData,
-    recipes: [],
     ingredients: [],
     searchResults: searchResults,
     tagSearchResults: []
 }
 
-export default function builder(state = initialState, action) {
+type ActionType = 
+    | {type: "ADD_INGREDIENT", parent: string, ingredient: string }
+    | {type: "REMOVE_INGREDIENT", ingObj: {parent: string, ingredient: string}}
+    | {type: "SEARCH_REQUEST"}
+    | {type: "SEARCH_SUCCESS", searchResults: any}
+    | {type: "SEARCH_ERROR", message: string}
+    | {type: "SEARCH_TAGS", text: string}
+
+export default function builder(state = initialState, action: ActionType) {
     switch(action.type) {
         case "ADD_INGREDIENT":
             if(state.ingredients.find((ing) => ing.parent === action.parent && ing.ingredient === action.ingredient)) {
@@ -27,7 +43,7 @@ export default function builder(state = initialState, action) {
             console.log(action.message)
             return state;
         case "SEARCH_TAGS":
-            let tagSearchResults = []
+            let tagSearchResults: IngredientType[] = []
             if(action.text.length === 0) {
                 tagSearchResults = []
             } else {
@@ -38,7 +54,7 @@ export default function builder(state = initialState, action) {
                         return {parent: cat.name, ingredient: i}
                     })
                     if(catResults.length > 0) {
-                        tagSearchResults.push(catResults)
+                        catResults.forEach(item => tagSearchResults.push(item))
                     }
                     
                 })
