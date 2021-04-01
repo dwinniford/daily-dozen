@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import './App.css';
 import Home  from './components/Home'
 import About from './components/About'
+import LoginPage from './containers/LoginPage'
 import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <DashboardContainer />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
           </Route>
           <Route path="/">
             <Home />
