@@ -9,29 +9,35 @@ export default function UserForm() {
     const [name, updateName] = useState("")
     const [password, updatePassword] = useState("")
 
-    type ChangeEventType = {
-        target: {value: string}
-    }
-    const onNameChange = (e: ChangeEventType) => {
-        console.log(e.target.value)
-        updateName(e.target.value)
+    const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+        console.log(e.currentTarget.value)
+        updateName(e.currentTarget.value)
     }
 
-    const onPasswordChange = (e: ChangeEventType) => {
-        console.log(e.target.value)
-        updatePassword(e.target.value)
+    const onPasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
+        console.log(e.currentTarget.value)
+        updatePassword(e.currentTarget.value)
+    }
+
+
+    const onFormSubmit = (event: React.SyntheticEvent) => {
+        event.preventDefault()
+        console.log({
+            name,
+            password
+        })
     }
 
     return (
-        <StandardForm>
+        <StandardForm onSubmit={onFormSubmit}>
             <InputHolder>
-                <FormInput name="name" placeholder="name" value={name} onChange={(event: ChangeEventType) => onNameChange(event)} />
+                <FormInput name="name" placeholder="name" value={name} onChange={onNameChange} />
             </InputHolder>
             <InputHolder>
-                <FormInput name="password" type="password" placeholder="password" value={password} onChange={(event: ChangeEventType) => onPasswordChange(event)} />
+                <FormInput name="password" type="password" placeholder="password" value={password} onChange={onPasswordChange} />
             </InputHolder>
             <InputHolder>
-                <BlackButton>Submit</BlackButton>
+                <BlackButton type="submit">Submit</BlackButton>
             </InputHolder>
             
         </StandardForm>
