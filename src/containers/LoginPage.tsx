@@ -1,5 +1,5 @@
 import React from 'react'
-import {Title, BlackButtonLink} from "../style/base"
+import {Title, BlackButtonLink, BodyText} from "../style/base"
 import UserForm from './UserForm'
 
 export default function LoginPage() {
@@ -7,7 +7,7 @@ export default function LoginPage() {
         <div>
             <Title>Login</Title>
             <UserForm />
-            <p>Don't have an account?</p>
+            <BodyText>Don't have an account?</BodyText>
             <BlackButtonLink to="/signup">Sign up</BlackButtonLink>
         </div>
     )

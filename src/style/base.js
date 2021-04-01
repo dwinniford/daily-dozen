@@ -9,6 +9,9 @@ export const Subtitle = styled.h3`
     font-weight: 600;
     margin-right: 6rem;
 `
+export const BodyText = styled.p`
+    color: white;
+`
 
 export const BackgroundOverlay = styled.div`
     grid-column: 1;

@@ -1,11 +1,11 @@
 import React from 'react'
-import {Title, BlackButtonLink} from '../style/base'
+import {Title, BlackButtonLink, BodyText} from '../style/base'
 
 export default function SignupPage() {
     return (
         <div>
             <Title>Sign up</Title>
-            <p>Already have an account?</p>
+            <BodyText>Already have an account?</BodyText>
             <BlackButtonLink to="/login">Login</BlackButtonLink>
         </div>
     )
