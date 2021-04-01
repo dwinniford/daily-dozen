@@ -7,6 +7,7 @@ export default function NavBar() {
             <BlackButtonLink to="/">Home</BlackButtonLink>
             <BlackButtonLink to="/about">About</BlackButtonLink>
             <BlackButtonLink to="/dashboard">Dashboard</BlackButtonLink>
+            <BlackButtonLink to="/login" >Login</BlackButtonLink>
         </NavGrid>
     )
 }

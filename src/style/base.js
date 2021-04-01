@@ -24,6 +24,10 @@ export const NavGrid = styled.div`
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+    @media(min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        max-width: 550px;
+    }
 `
 
 export const BlackButtonLink = styled(Link)`
