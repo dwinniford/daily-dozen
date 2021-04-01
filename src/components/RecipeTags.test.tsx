@@ -10,7 +10,7 @@ import {searchResults} from '../redux/reducers/sampleSearch'
 
 import { createStore, applyMiddleware } from "redux"
 import thunk from 'redux-thunk'
-import {rootReducer} from "../redux/reducers/rootReducer.js"
+import {rootReducer} from "../redux/reducers/rootReducer"
 
 let container = null 
 let component = null

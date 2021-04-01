@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import App from './App';
 
 import { Provider } from 'react-redux'
-import store from './redux/store.js'
+import store from './redux/store'
 
 let container = null 
 
