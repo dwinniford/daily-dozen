@@ -4,6 +4,7 @@ import './App.css';
 import Home  from './components/Home'
 import About from './components/About'
 import LoginPage from './containers/LoginPage'
+import SignupPage from './containers/SignupPage'
 import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/signup">
+            <SignupPage />
           </Route>
           <Route path="/">
             <Home />
