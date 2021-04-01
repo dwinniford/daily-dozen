@@ -12,8 +12,8 @@ import { createStore, applyMiddleware } from "redux"
 import thunk from 'redux-thunk'
 import {rootReducer} from "../redux/reducers/rootReducer"
 
-let container = null 
-let component = null
+let container: any = null 
+let component: any = null
 let store = null
 
 beforeEach(() => {
