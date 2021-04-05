@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {FormInput} from '../style/dashboard'
 import {BlackButton} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
@@ -11,6 +11,7 @@ export default function UserForm(props: UserFormProps) {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [confirmPasswordError, setConfirmPasswordError] = useState(false)
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -26,6 +27,14 @@ export default function UserForm(props: UserFormProps) {
     const onConfirmPasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
         setConfirmPassword(e.currentTarget.value)
     }
+
+    useEffect(() => {
+        if(password !== confirmPassword) {
+            setConfirmPasswordError(true)
+        } else {
+            setConfirmPasswordError(false)
+        }
+    }, [password, confirmPassword])
 
 
     const onFormSubmit = (event: React.SyntheticEvent) => {
@@ -49,7 +58,7 @@ export default function UserForm(props: UserFormProps) {
         if(props.signup) {
             return (
                 <InputHolder>
-                    <FormInput name="confirmPassword" type="password" placeholder="confirm password" value={confirmPassword} onChange={onConfirmPasswordChange} />
+                    <FormInput error={confirmPasswordError} name="confirmPassword" type="password" placeholder="confirm password" value={confirmPassword} onChange={onConfirmPasswordChange} />
                 </InputHolder>
             )
         }

@@ -108,6 +108,10 @@ export const FormInput = styled.input`
     color: white;
     padding: .5rem 1rem;
     font-size: 1.25rem;
+    border: ${ props => props.error? "2px solid red" : "none"};
+    :focus {
+        outline: none
+    }
 `
 
 export const FormLabel = styled.label`
