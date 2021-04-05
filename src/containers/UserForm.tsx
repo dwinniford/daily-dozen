@@ -4,8 +4,10 @@ import {BlackButton} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
 
 
-
-export default function UserForm() {
+type UserFormProps = {
+    signup?: boolean
+}
+export default function UserForm(props: UserFormProps) {
     const [name, updateName] = useState("")
     const [password, updatePassword] = useState("")
 
@@ -28,6 +30,16 @@ export default function UserForm() {
         })
     }
 
+    const confirmPasswordInput = () => {
+        if(props.signup) {
+            return (
+                <InputHolder>
+                    <FormInput name="confirmPassword" type="password" placeholder="confirm password" value={password} onChange={onPasswordChange} />
+                </InputHolder>
+            )
+        }
+    }
+
     return (
         <StandardForm onSubmit={onFormSubmit}>
             <InputHolder>
@@ -36,6 +48,7 @@ export default function UserForm() {
             <InputHolder>
                 <FormInput name="password" type="password" placeholder="password" value={password} onChange={onPasswordChange} />
             </InputHolder>
+            {confirmPasswordInput()}
             <InputHolder>
                 <BlackButton type="submit">Submit</BlackButton>
             </InputHolder>
