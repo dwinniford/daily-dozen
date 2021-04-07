@@ -16,12 +16,12 @@ export default function UserForm(props: UserFormProps) {
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value)
+        // console.log(e.currentTarget.value)
         setName(e.currentTarget.value)
     }
 
     const onPasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value)
+        // console.log(e.currentTarget.value)
         setPassword(e.currentTarget.value)
     }
 
@@ -48,6 +48,7 @@ export default function UserForm(props: UserFormProps) {
             setMessage("Password does not match Confirm Password.")
             return false
         } else {
+            setMessage("")
             return true
         }
     }
@@ -61,6 +62,7 @@ export default function UserForm(props: UserFormProps) {
                     name,
                     password
                 })
+                window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
             }
@@ -72,6 +74,7 @@ export default function UserForm(props: UserFormProps) {
                     password,
                     confirmPassword
                 })
+                window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
             }
