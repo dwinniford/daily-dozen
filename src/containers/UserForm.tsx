@@ -36,20 +36,42 @@ export default function UserForm(props: UserFormProps) {
         }
     }, [password, confirmPassword])
 
+    const validateForm = () => {
+        if(name.length < 2) {
+            return false
+        } else if(password.length < 5) {
+            return false
+        } else if(props.signup && password !== confirmPassword) {
+            return false
+        } else {
+            return true
+        }
+    }
+
 
     const onFormSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault()
         if(!props.signup) {
-            console.log({
-                name,
-                password
-            })
+            if(validateForm()) {
+                console.log({
+                    name,
+                    password
+                })
+            } else {
+                console.log("invalid input")
+            }
+            
         } else {
-            console.log({
-                name,
-                password,
-                confirmPassword
-            })
+            if(validateForm()) {
+                console.log({
+                    name,
+                    password,
+                    confirmPassword
+                })
+            } else {
+                console.log("invalid input")
+            }
+            
         }
         
     }
