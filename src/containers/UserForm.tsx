@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {FormInput} from '../style/dashboard'
-import {BlackButton} from '../style/base'
+import {BlackButton, MessageHolder} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
 
 
@@ -12,6 +12,7 @@ export default function UserForm(props: UserFormProps) {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
+    const [message, setMessage] = useState("")
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -38,10 +39,13 @@ export default function UserForm(props: UserFormProps) {
 
     const validateForm = () => {
         if(name.length < 2) {
+            setMessage("Name must have at least 2 characters.")
             return false
         } else if(password.length < 5) {
+            setMessage("Password must have at least 5 characters.")
             return false
         } else if(props.signup && password !== confirmPassword) {
+            setMessage("Password does not match Confirm Password.")
             return false
         } else {
             return true
@@ -88,6 +92,7 @@ export default function UserForm(props: UserFormProps) {
 
     return (
         <StandardForm onSubmit={onFormSubmit}>
+            {message.length? <MessageHolder>{message}</MessageHolder> : null}
             <InputHolder>
                 <FormInput name="name" placeholder="name" value={name} onChange={onNameChange} />
             </InputHolder>
