@@ -2,12 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {FormInput} from '../style/dashboard'
 import {BlackButton, MessageHolder} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
+import {connect} from 'react-redux'
 
 
 type UserFormProps = {
     signup?: boolean
+    login: Function
 }
-export default function UserForm(props: UserFormProps) {
+function UserForm(props: UserFormProps) {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -62,7 +64,8 @@ export default function UserForm(props: UserFormProps) {
                     name,
                     password
                 })
-                window.location.assign('/dashboard')
+                props.login(name)
+                // window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
             }
@@ -74,7 +77,8 @@ export default function UserForm(props: UserFormProps) {
                     password,
                     confirmPassword
                 })
-                window.location.assign('/dashboard')
+                props.login(name)
+                // window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
             }
@@ -110,3 +114,11 @@ export default function UserForm(props: UserFormProps) {
         </StandardForm>
     )
 }
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        login: (name: string) => dispatch({type: "LOGIN", name})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(UserForm)
