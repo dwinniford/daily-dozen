@@ -11,7 +11,11 @@ import DashboardContainer from './containers/DashboardContainer'
 
 import {connect} from 'react-redux'
 
-function App(props) {
+type PropsType = {
+  loggedIn: boolean
+}
+
+function App(props: PropsType) {
   return (
     <BrowserRouter>
       <BackgroundOverlay>
@@ -39,7 +43,11 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
+type StateType = {
+  user: {loggedIn: boolean}
+}
+
+const mapStateToProps = (state: StateType) => {
   return {
     loggedIn: state.user.loggedIn
   }
