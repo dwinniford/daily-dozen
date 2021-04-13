@@ -12,7 +12,7 @@ function NavBar(props: PropsType) {
             <BlackButtonLink to="/">Home</BlackButtonLink>
             <BlackButtonLink to="/about">About</BlackButtonLink>
             { props.loggedIn? <BlackButtonLink to="/dashboard">Dashboard</BlackButtonLink> : null }
-            <BlackButtonLink to="/login" >Login</BlackButtonLink>
+            { props.loggedIn? null : <BlackButtonLink to="/login" >Login</BlackButtonLink> }
         </NavGrid>
     )
 }
