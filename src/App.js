@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import './App.css';
 import Home  from './components/Home'
 import About from './components/About'
@@ -9,7 +9,9 @@ import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
 
-function App() {
+import {connect} from 'react-redux'
+
+function App(props) {
   return (
     <BrowserRouter>
       <BackgroundOverlay>
@@ -22,10 +24,10 @@ function App() {
             <DashboardContainer />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            {props.loggedIn? <Redirect to="/dashboard" /> : <LoginPage /> }
           </Route>
           <Route path="/signup">
-            <SignupPage />
+            { props.loggedIn? <Redirect to="/dashboard" /> : <SignupPage /> }
           </Route>
           <Route path="/">
             <Home />
@@ -37,4 +39,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.user.loggedIn
+  }
+}
+
+export default connect(mapStateToProps)(App);
