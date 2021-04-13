@@ -25,7 +25,7 @@ function App(props: PropsType) {
             <About />
           </Route>
           <Route path="/dashboard">
-            <DashboardContainer />
+            {props.loggedIn? <DashboardContainer /> : <Redirect to="/login" />}
           </Route>
           <Route path="/login">
             {props.loggedIn? <Redirect to="/dashboard" /> : <LoginPage /> }
