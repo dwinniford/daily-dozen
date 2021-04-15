@@ -20,11 +20,11 @@ afterEach(() => {
 })
 
 test('renders without crashing', () => {
-  ReactDOM.render(<App />, container)
+  ReactDOM.render(<Provider store={store}><App /></Provider>, container)
 });
 
 it('renders home page title', () => {
-  const {getByText} = render(<App />, container)
+  const {getByText} = render(<Provider store={store}><App /></Provider>, container)
   expect(getByText('Daily Dozen Home')).toBeInTheDocument();
 })
 
@@ -35,9 +35,9 @@ test('it redirects to dashboard on dashboard link click', () => {
   // 2. check initial text value - title
   expect(getByText('Daily Dozen Home')).toBeInTheDocument()
   // 3. find and click the dashboard button
-  fireEvent.click(getByText('Dashboard'))
+  fireEvent.click(getByText('Login'))
   // 4. check for the new title value
-  expect(getByText('Find a Recipe')).toBeInTheDocument()
+  expect(getByText('Submit')).toBeInTheDocument()
 
 })
 
