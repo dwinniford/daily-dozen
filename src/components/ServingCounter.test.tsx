@@ -37,7 +37,7 @@ describe("serving counter displays empty check circles for no tags", () => {
     })
     test('it shows 1 check when tag exists', () => {
         const mockTag = {parent: "Beans", ingredient: "Black beans", servings: 1, recipeUrl: "http://ohsheglows.com/2009/06/23/back-eyed-peas-the-edible-kind/"}
-        const mockInitialState = {mealPlan: {tags: [mockTag]}}
+        const mockInitialState = {mealPlan: {message: "", recipes: [], tags: [mockTag]}}
         const mockStore = createStore(combineReducers({builder, mealPlan}), mockInitialState, applyMiddleware(thunk));
         component = render(<Provider store={mockStore} ><ServingCounter parent={"Beans"} servingQuantity={3} /></Provider>, container)
         expect(component.getAllByText('unchecked Beans serving').length).toEqual(2)
