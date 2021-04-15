@@ -20,10 +20,10 @@ function TagItem(props: PropsType) {
         <ListItem >
             {props.tag.parent + " - " + props.tag.ingredient + " - " + props.tag.servings + " servings" }
             <ExpandButton>
-                <WhiteMinus onClick={(event: {}) => minusTag()} />
+                <WhiteMinus title="decrease servings" onClick={(event: {}) => minusTag()} />
             </ExpandButton>
             <ExpandButton>
-                <WhitePlus onClick={(event: {}) => props.incrementTag(props.tag)} />
+                <WhitePlus title="increase servings" onClick={(event: {}) => props.incrementTag(props.tag)} />
             </ExpandButton>
             
         </ListItem>
