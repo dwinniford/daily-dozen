@@ -54,3 +54,9 @@ test('it decrements serving', () => {
     expect(screen.getByText("Beans - Black beans - 1 servings")).toBeInTheDocument()
 })
 
+test('it removes tag when decreasing servings from 1', ()=> {
+    expect(screen.getByText("decrease servings")).toBeInTheDocument()
+    fireEvent.click(component.getByText('decrease servings'))
+    expect(screen.queryByText("Beans - Black beans - 1 servings")).not.toBeInTheDocument()
+})
+
