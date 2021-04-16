@@ -45,3 +45,12 @@ test('it increments serving', () => {
     fireEvent.click(component.getByText('increase servings'))
     expect(screen.getByText("Beans - Black beans - 2 servings")).toBeInTheDocument()
 })
+
+test('it decrements serving', () => {
+    fireEvent.click(component.getByText('increase servings'))
+    expect(screen.getByText("Beans - Black beans - 2 servings")).toBeInTheDocument()
+    expect(component.getByText('decrease servings')).toBeInTheDocument()
+    fireEvent.click(component.getByText('decrease servings'))
+    expect(screen.getByText("Beans - Black beans - 1 servings")).toBeInTheDocument()
+})
+
