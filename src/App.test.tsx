@@ -6,7 +6,8 @@ import App from './App';
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
-let container = null 
+let container: any = null 
+let component: any = null
 
 beforeEach(() => {
     container = document.createElement('div')
@@ -17,6 +18,7 @@ afterEach(() => {
     unmountComponentAtNode(container)
     container.remove()
     container = null
+    component = null
 })
 
 test('renders without crashing', () => {
@@ -29,17 +31,23 @@ it('renders home page title', () => {
 })
 
 // test that the dashboard link redirects to the build a recipe page.
-test('it redirects to dashboard on dashboard link click', () => {
+test('it redirects to login on login link click and logs in', () => {
   // 1. mount app
-  const {getByText} = render(<Provider store={store}><App /></Provider>, container)
+  component = render(<Provider store={store}><App /></Provider>, container)
   // 2. check initial text value - title
-  expect(getByText('Daily Dozen Home')).toBeInTheDocument()
-  // 3. find and click the dashboard button
-  fireEvent.click(getByText('Login'))
-  // 4. check for the new title value
-  expect(getByText('Submit')).toBeInTheDocument()
-
+  expect(component.getByText('Daily Dozen Home')).toBeInTheDocument()
+  // 3. find and click the login button
+  fireEvent.click(component.getByText('Login'))
+  // 4. check for a value on the login page
+  expect(component.getByText('Submit')).toBeInTheDocument()
+  expect(component.getByPlaceholderText('name')).toBeInTheDocument()
+  fireEvent.change(component.getByPlaceholderText('name'), {target: {value: "bubba"}})
+  fireEvent.change(component.getByPlaceholderText('password'), {target: {value: "bubba"}})
+  fireEvent.click(component.getByText('Submit'))
+  expect(component.getByText('Meal Plan')).toBeInTheDocument()
 })
+
+
 
 
 
