@@ -4,6 +4,7 @@ import TypesCard from './TypesCard'
 import ServingCounter from './ServingCounter'
 import {CategoryHead } from '../style/dashboard.js'
 import {UnmountClosed} from 'react-collapse'
+import {WhiteChevronRight} from '../style/icons'
 
 
 
@@ -15,10 +16,14 @@ export default function Category(props: CategoryProps) {
         display ? toggleDisplay(false) : toggleDisplay(true)
     }
 
+    const chevron = () => {
+        return display ? <WhiteChevronRight down="true" title="collapse category"/> : <WhiteChevronRight title="expand category" />
+    }
+
     return (
         <div>
             <CategoryHead>
-            <BlackButton onClick={handleToggle}>{props.category.name} </BlackButton>
+            <BlackButton onClick={handleToggle}>{props.category.name} {chevron()}</BlackButton>
             <ServingCounter parent={props.category.name} servingQuantity={props.category.servings.quantity} />
             </CategoryHead>
             <UnmountClosed isOpened={display} initialStyle={{height: '0px', overflow: 'hidden'}} >
