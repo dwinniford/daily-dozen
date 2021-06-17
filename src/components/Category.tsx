@@ -16,6 +16,7 @@ export default function Category(props: CategoryProps) {
         display ? toggleDisplay(false) : toggleDisplay(true)
     }
 
+    // this could be extracted to its own component that recieves props "down" and "title"
     const chevron = () => {
         return display ? <WhiteChevronRight down="true" title="collapse category"/> : <WhiteChevronRight title="expand category" />
     }
