@@ -5,6 +5,31 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://[::1]:3000/graphql",
+  cache: new InMemoryCache()
+})
+
+client.query({
+  query: gql`
+    query {
+      mealPlansAll {
+        title 
+        id
+      }
+    }
+  `
+})
+.then(data => console.log(data))
+
 
 ReactDOM.render(
   
