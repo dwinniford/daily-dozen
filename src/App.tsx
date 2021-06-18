@@ -8,6 +8,7 @@ import SignupPage from './containers/SignupPage'
 import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
+import MealPlans from './containers/MealPlans';
 
 import {connect} from 'react-redux'
 
@@ -32,6 +33,9 @@ function App(props: PropsType) {
           </Route>
           <Route path="/signup">
             { props.loggedIn? <Redirect to="/dashboard" /> : <SignupPage /> }
+          </Route>
+          <Route path="/meal-plans">
+            <MealPlans />
           </Route>
           <Route path="/">
             <Home />

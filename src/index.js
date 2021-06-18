@@ -18,25 +18,36 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-client.query({
-  query: gql`
-    query {
-      mealPlansAll {
-        title 
-        id
-      }
-    }
-  `
-})
-.then(data => console.log(data))
+// client.query({
+//   query: gql`
+//     query {
+//       mealPlansAll {
+//         title 
+//         id
+//       }
+//     }
+//   `
+// })
+// .then(data => console.log(data))
+
+// const MEAL_PLANS = gql`
+//   query {
+//     mealPlansAll {
+//       title 
+//       id
+//     }
+//   }
+// `
 
 
 ReactDOM.render(
   
     <React.StrictMode>
-      <Provider store={store}>
-      <App />
-      </Provider>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ApolloProvider>
     </React.StrictMode>
   
   ,
