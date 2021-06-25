@@ -3,6 +3,8 @@ import {FormInput} from '../style/dashboard'
 import {BlackButton, MessageHolder} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
 import {connect} from 'react-redux'
+import SIGN_UP from '../gql/mutations/signUp'
+import {useMutation} from '@apollo/client'
 
 
 type UserFormProps = {
@@ -15,6 +17,7 @@ function UserForm(props: UserFormProps) {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
     const [message, setMessage] = useState("")
+    const [signUp, {data}] = useMutation(SIGN_UP)
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -72,6 +75,7 @@ function UserForm(props: UserFormProps) {
             
         } else {
             if(validateForm()) {
+                signUp({variables: {name: name, password: password}})
                 console.log({
                     name,
                     password,
