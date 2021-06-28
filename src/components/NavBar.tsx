@@ -7,12 +7,16 @@ type PropsType = {
 }
 
 function NavBar(props: PropsType) {
+    const userToken = () => {
+        return localStorage.getItem('token')
+      }
+
     return (
         <NavGrid>
             <BlackButtonLink to="/">Home</BlackButtonLink>
             <BlackButtonLink to="/about">About</BlackButtonLink>
-            { props.loggedIn? <BlackButtonLink to="/dashboard">Dashboard</BlackButtonLink> : null }
-            { props.loggedIn? null : <BlackButtonLink to="/login" >Login</BlackButtonLink> }
+            { userToken()? <BlackButtonLink to="/dashboard">Dashboard</BlackButtonLink> : null }
+            { userToken()? null : <BlackButtonLink to="/login" >Login</BlackButtonLink> }
         </NavGrid>
     )
 }
