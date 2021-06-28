@@ -9,36 +9,12 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
 } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "http://[::1]:3000/graphql",
   cache: new InMemoryCache()
 })
-
-// client.query({
-//   query: gql`
-//     query {
-//       mealPlansAll {
-//         title 
-//         id
-//       }
-//     }
-//   `
-// })
-// .then(data => console.log(data))
-
-// const MEAL_PLANS = gql`
-//   query {
-//     mealPlansAll {
-//       title 
-//       id
-//     }
-//   }
-// `
-
 
 ReactDOM.render(
   
