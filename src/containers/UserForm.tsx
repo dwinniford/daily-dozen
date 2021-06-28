@@ -17,7 +17,7 @@ function UserForm(props: UserFormProps) {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
     const [message, setMessage] = useState("")
-    const [signUp, {data}] = useMutation(SIGN_UP)
+    const [signUp, {data, loading, error, called}] = useMutation(SIGN_UP)
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -81,7 +81,7 @@ function UserForm(props: UserFormProps) {
                     password,
                     confirmPassword
                 })
-                props.login(name)
+                // props.login(name)
                 // window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
@@ -99,6 +99,16 @@ function UserForm(props: UserFormProps) {
                 </InputHolder>
             )
         }
+    }
+    const saveToken = (token: string) => {
+        localStorage.setItem('token', token)
+    }
+    if(loading) return <MessageHolder>loading</MessageHolder>
+    if(error) return <MessageHolder>error</MessageHolder>
+    if(called) {
+        console.log(data); 
+        saveToken(data.signUp.token)
+        return <MessageHolder>called</MessageHolder>
     }
 
     return (
