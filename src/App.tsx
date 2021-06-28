@@ -33,10 +33,10 @@ function App(props: PropsType) {
             {userToken()? <DashboardContainer /> : <Redirect to="/login" />}
           </Route>
           <Route path="/login">
-            {props.loggedIn? <Redirect to="/dashboard" /> : <LoginPage /> }
+            {userToken()? <Redirect to="/dashboard" /> : <LoginPage /> }
           </Route>
           <Route path="/signup">
-            { props.loggedIn? <Redirect to="/dashboard" /> : <SignupPage /> }
+            { userToken()? <Redirect to="/dashboard" /> : <SignupPage /> }
           </Route>
           <Route path="/meal-plans">
             <MealPlans />
