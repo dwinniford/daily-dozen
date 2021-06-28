@@ -16,6 +16,10 @@ type PropsType = {
   loggedIn: boolean
 }
 
+const userToken = () => {
+  return localStorage.getItem('token')
+}
+
 function App(props: PropsType) {
   return (
     <BrowserRouter>
@@ -26,7 +30,7 @@ function App(props: PropsType) {
             <About />
           </Route>
           <Route path="/dashboard">
-            {props.loggedIn? <DashboardContainer /> : <Redirect to="/login" />}
+            {userToken()? <DashboardContainer /> : <Redirect to="/login" />}
           </Route>
           <Route path="/login">
             {props.loggedIn? <Redirect to="/dashboard" /> : <LoginPage /> }

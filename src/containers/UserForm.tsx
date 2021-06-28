@@ -5,6 +5,7 @@ import {StandardForm, InputHolder} from '../style/user'
 import {connect} from 'react-redux'
 import SIGN_UP from '../gql/mutations/signUp'
 import {useMutation} from '@apollo/client'
+import {Redirect} from 'react-router-dom'
 
 
 type UserFormProps = {
@@ -108,7 +109,7 @@ function UserForm(props: UserFormProps) {
     if(called) {
         console.log(data); 
         saveToken(data.signUp.token)
-        return <MessageHolder>called</MessageHolder>
+        return <Redirect to="/dashboard" />
     }
 
     return (
