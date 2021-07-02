@@ -29,15 +29,9 @@ function App(props: PropsType) {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/dashboard">
-            {userToken()? <DashboardContainer /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/login">
-            {userToken()? <Redirect to="/dashboard" /> : <LoginPage /> }
-          </Route>
-          <Route path="/signup">
-            { userToken()? <Redirect to="/dashboard" /> : <SignupPage /> }
-          </Route>
+          <Route path="/dashboard" render={() => userToken()? <DashboardContainer /> : <Redirect to="/login" />} />
+          <Route path="/login" render={() => userToken()? <Redirect to="/dashboard" /> : <LoginPage />} />
+          <Route path="/signup" render={() => userToken()? <Redirect to="/dashboard" /> : <SignupPage />} />
           <Route path="/meal-plans">
             <MealPlans />
           </Route>
