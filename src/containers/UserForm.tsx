@@ -4,6 +4,7 @@ import {BlackButton, MessageHolder} from '../style/base'
 import {StandardForm, InputHolder} from '../style/user'
 import {connect} from 'react-redux'
 import SIGN_UP from '../gql/mutations/signUp'
+import SIGN_IN from '../gql/mutations/signIn'
 import {useMutation} from '@apollo/client'
 import {Redirect} from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function UserForm(props: UserFormProps) {
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
     const [message, setMessage] = useState("")
     const [signUp, {data, loading, error, called}] = useMutation(SIGN_UP)
+    const [signIn, signInStatus] = useMutation(SIGN_IN)
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -64,11 +66,12 @@ function UserForm(props: UserFormProps) {
         event.preventDefault()
         if(!props.signup) {
             if(validateForm()) {
+                signIn({variables: {name: name, password: password}})
                 console.log({
                     name,
                     password
                 })
-                props.login(name)
+                // props.login(name)
                 // window.location.assign('/dashboard')
             } else {
                 console.log("invalid input")
@@ -104,9 +107,15 @@ function UserForm(props: UserFormProps) {
     const saveToken = (token: string) => {
         localStorage.setItem('token', token)
     }
-    if(loading) return <MessageHolder>loading</MessageHolder>
-    if(error) return <MessageHolder>error</MessageHolder>
-    if(called) {
+    if(loading || signInStatus.loading) return <MessageHolder>loading</MessageHolder>
+    if(error || signInStatus.error) return <MessageHolder>error</MessageHolder>
+    if(called || signInStatus.called) {
+        if(signInStatus.called) {
+            console.log(signInStatus.data)
+            saveToken(signInStatus.data.signIn.token)
+            props.login(signInStatus.data.signIn.user.name)
+            return <Redirect to="/dashboard" />
+        }
         console.log(data); 
         saveToken(data.signUp.token)
         props.login(data.signUp.user.name)
