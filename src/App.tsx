@@ -13,14 +13,20 @@ import MealPlans from './containers/MealPlans';
 import {connect} from 'react-redux'
 
 type PropsType = {
-  loggedIn: boolean
+  loggedIn: boolean,
+  login: Function
 }
 
-const userToken = () => {
-  return localStorage.getItem('token')
-}
 
 function App(props: PropsType) {
+  const userToken = () => {
+    return localStorage.getItem('token')
+  }
+  if(userToken()) {
+    // console.log(userToken())
+    props.login("")
+  }  
+
   return (
     <BrowserRouter>
       <BackgroundOverlay>
@@ -55,4 +61,10 @@ const mapStateToProps = (state: StateType) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+      login: (name: string) => dispatch({type: "LOGIN", name})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

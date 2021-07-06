@@ -109,6 +109,7 @@ function UserForm(props: UserFormProps) {
     if(called) {
         console.log(data); 
         saveToken(data.signUp.token)
+        props.login(data.signUp.user.name)
         return <Redirect to="/dashboard" />
     }
 
