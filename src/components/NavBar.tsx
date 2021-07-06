@@ -3,7 +3,8 @@ import {NavGrid, BlackButtonLink} from '../style/base.js'
 import {connect} from 'react-redux'
 
 type PropsType = {
-    loggedIn: boolean
+    loggedIn: boolean,
+    logout: Function
 }
 
 function NavBar(props: PropsType) {
@@ -12,6 +13,7 @@ function NavBar(props: PropsType) {
     //   }
     const deleteToken = () => {
         localStorage.removeItem('token')
+        props.logout()
     }
 
     return (
@@ -34,4 +36,10 @@ const mapStateToProps = (state: StateType) => {
     }
 }
 
-export default connect(mapStateToProps)(NavBar)
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        logout: () => dispatch({type: "LOGOUT"})
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
