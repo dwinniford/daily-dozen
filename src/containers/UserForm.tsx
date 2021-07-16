@@ -109,8 +109,15 @@ function UserForm(props: UserFormProps) {
     }
     if(loading || signInStatus.loading) return <MessageHolder>loading</MessageHolder>
     if(error || signInStatus.error) {
-        console.log(error, signInStatus.error)
-        return <MessageHolder>There was an error logging in.  Please check your user name and password.</MessageHolder>
+        if(error) {
+            console.log(error.graphQLErrors)
+        return <MessageHolder>{error.graphQLErrors.map( obj => obj.message).join(", ")}</MessageHolder>
+        }
+        if(signInStatus.error) {
+            console.log(signInStatus.error.graphQLErrors)
+        return <MessageHolder>{signInStatus.error.graphQLErrors.map( obj => obj.message).join(", ")}</MessageHolder>
+        }
+        
     }
     
     if(called || signInStatus.called) {
