@@ -3,6 +3,7 @@ import {unmountComponentAtNode} from 'react-dom'
 import {render, fireEvent, screen} from '@testing-library/react'
 import UserForm from './UserForm'
 import {Provider} from 'react-redux'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 // import store from '../redux/store'
 
 import { createStore, applyMiddleware } from "redux"
@@ -11,7 +12,10 @@ import thunk from 'redux-thunk'
 import {rootReducer} from "../redux/reducers/rootReducer"
 
 
-
+let client = new ApolloClient({
+    uri: "http://[::1]:3000/graphql",
+   cache: new InMemoryCache()
+})
 let container: any = null 
 let component: any = null
 let store = null
@@ -20,7 +24,7 @@ beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
     store = createStore(rootReducer, applyMiddleware(thunk));
-    component = render(<Provider store={store}><UserForm /></Provider>, container)
+    component = render(<ApolloProvider client={client}><Provider store={store}><UserForm /></Provider></ApolloProvider>, container)
 })
 
 afterEach(() => {
