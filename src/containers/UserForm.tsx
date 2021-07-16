@@ -19,7 +19,7 @@ function UserForm(props: UserFormProps) {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
     const [message, setMessage] = useState("")
-    const [signUp, {data, loading, error, called}] = useMutation(SIGN_UP)
+    const [signUp, {data, loading, error, called}] = useMutation(SIGN_UP, {errorPolicy: 'all'})
     const [signIn, signInStatus] = useMutation(SIGN_IN, {errorPolicy: 'all'})
 
 
