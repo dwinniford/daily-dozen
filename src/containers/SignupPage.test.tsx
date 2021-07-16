@@ -4,12 +4,17 @@ import {BrowserRouter} from 'react-router-dom'
 import {render, fireEvent, screen} from '@testing-library/react'
 import SignupPage from './SignupPage'
 import {Provider} from 'react-redux'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
 import { createStore, applyMiddleware } from "redux"
 // import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import {rootReducer} from "../redux/reducers/rootReducer"
 
+let client = new ApolloClient({
+    uri: "http://[::1]:3000/graphql",
+   cache: new InMemoryCache()
+})
 
 let container: any = null 
 let component: any = null
@@ -19,7 +24,7 @@ beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
     store = createStore(rootReducer, applyMiddleware(thunk));
-    component = render(<Provider store={store}><BrowserRouter><SignupPage /></BrowserRouter></Provider>, container)
+    component = render(<ApolloProvider client={client}><Provider store={store}><BrowserRouter><SignupPage /></BrowserRouter></Provider></ApolloProvider>, container)
 })
 
 afterEach(() => {
