@@ -20,7 +20,7 @@ function UserForm(props: UserFormProps) {
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
     const [message, setMessage] = useState("")
     const [signUp, {data, loading, error, called}] = useMutation(SIGN_UP)
-    const [signIn, signInStatus] = useMutation(SIGN_IN)
+    const [signIn, signInStatus] = useMutation(SIGN_IN, {errorPolicy: 'all'})
 
 
     const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -108,7 +108,11 @@ function UserForm(props: UserFormProps) {
         localStorage.setItem('token', token)
     }
     if(loading || signInStatus.loading) return <MessageHolder>loading</MessageHolder>
-    if(error || signInStatus.error) return <MessageHolder>error</MessageHolder>
+    if(error || signInStatus.error) {
+        console.log(error, signInStatus.error)
+        return <MessageHolder>There was an error logging in.  Please check your user name and password.</MessageHolder>
+    }
+    
     if(called || signInStatus.called) {
         if(signInStatus.called) {
             console.log(signInStatus.data)
