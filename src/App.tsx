@@ -24,6 +24,7 @@ function App(props: PropsType) {
   }
   if(userToken()) {
     // console.log(userToken())
+    // make api call to get user info
     props.login("")
   }  
 
