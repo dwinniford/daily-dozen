@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM, {unmountComponentAtNode} from 'react-dom'
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, wait, screen } from '@testing-library/react';
 import App from './App';
 
 import { Provider } from 'react-redux'
@@ -63,14 +63,20 @@ test('it redirects to login on login link click and logs in', async () => {
   expect(component.getByText('Daily Dozen Home')).toBeInTheDocument()
   // 3. find and click the login button
   fireEvent.click(component.getByText('Login'))
+
   // 4. check for a value on the login page
   expect(component.getByText('Submit')).toBeInTheDocument()
   expect(component.getByPlaceholderText('name')).toBeInTheDocument()
+  
   fireEvent.change(component.getByPlaceholderText('name'), {target: {value: "bubba"}})
   fireEvent.change(component.getByPlaceholderText('password'), {target: {value: "bubba"}})
+  
+  
   fireEvent.click(component.getByText('Submit'))
+  
   expect(component.getByText('loading')).toBeInTheDocument();
-  await new Promise(resolve => setTimeout( resolve, 0));
+  await wait()
+  // await new Promise(resolve => setTimeout( resolve, 0));
   expect(component.getByText('Meal Plan')).toBeInTheDocument()
 })
 
