@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {SearchResultsGrid, DashboardBlock} from '../style/dashboard'
-import {Title, MessageHolder} from '../style/base'
+import {MessageHolder} from '../style/base'
 import RecipeCard from '../components/RecipeCard'
+import MealPlanTitle from './MealPlanTitle'
 
 type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
 type MealPlanProps = {recipes: RecipeProps[], message: string}
@@ -22,7 +23,7 @@ function MealPlan(props: MealPlanProps) {
 
     return (
         <DashboardBlock>
-            <Title>Meal Plan</Title>
+            <MealPlanTitle />
             <MessageHolder opacity={opacity}>{props.message}</MessageHolder>
             <SearchResultsGrid>
                 {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} inMealPlan={true} />)}
