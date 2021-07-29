@@ -4,7 +4,7 @@ import {Plus} from '@styled-icons/feather/Plus'
 import {Circle} from '@styled-icons/feather/Circle'
 import {CheckCircle} from '@styled-icons/feather/CheckCircle'
 import {Minus} from '@styled-icons/feather/Minus'
-
+import {Edit} from '@styled-icons/feather/Edit'
 import {X} from '@styled-icons/feather/X'
 
 export const WhiteChevronRight = styled(ChevronRight)`
@@ -39,4 +39,12 @@ export const WhiteCheckCircle = styled(CheckCircle)`
     color: #ffffff;
     height: 25px;
     font-weight: 600;
+`
+export const EditTitle = styled(Edit)`
+    color: #fff;
+    height: 25px;
+    font-weight: 600;
+    position: absolute;
+    top: -10px;
+    right: 20%;
 `

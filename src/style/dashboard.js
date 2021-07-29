@@ -151,3 +151,6 @@ export const CollapseInner = styled.div`
 export const RecipeImg = styled.img`
     height: 200px;
 `
+export const TitleHolder = styled.div`
+    position: relative;
+`
