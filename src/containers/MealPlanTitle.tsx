@@ -1,13 +1,15 @@
 import React from 'react'
-import { Title } from '../style/base'
-import {EditTitle} from '../style/icons'
+import { Title, SuperScriptButton } from '../style/base'
+import {EditPencil} from '../style/icons'
 import {TitleHolder} from '../style/dashboard'
 
 function MealPlanTitle() {
     return (
         <TitleHolder>
             <Title>Meal Plan</Title>
-            <EditTitle title="edit title" />
+            <SuperScriptButton>
+                <EditPencil title="edit title" />
+            </SuperScriptButton>
         </TitleHolder>
     )
 }

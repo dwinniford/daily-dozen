@@ -40,11 +40,8 @@ export const WhiteCheckCircle = styled(CheckCircle)`
     height: 25px;
     font-weight: 600;
 `
-export const EditTitle = styled(Edit)`
+export const EditPencil = styled(Edit)`
     color: #fff;
     height: 25px;
     font-weight: 600;
-    position: absolute;
-    top: -10px;
-    right: 20%;
 `

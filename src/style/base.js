@@ -81,6 +81,13 @@ export const ExpandButton = styled(BlackButton)`
     border: 0;
     outline: none;
 `
+export const SuperScriptButton = styled(ExpandButton)`
+    position: absolute;
+    top: -20px;
+    right: 20%;
+    padding: .5rem
+`
+
 export const PositionTopRight = styled.div`
     position: absolute;
     top: 0;
