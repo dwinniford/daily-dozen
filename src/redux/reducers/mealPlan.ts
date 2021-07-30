@@ -2,9 +2,9 @@ type RecipeType = { url: string; label: string };
 
 type TagType = {recipeUrl: string; parent: string; ingredient: string; servings: number}
 
-type InitialStateType = {message: string; recipes: RecipeType[]; tags: TagType[];};
+type InitialStateType = {message: string; recipes: RecipeType[]; tags: TagType[]; title: string};
 
-const initialState: InitialStateType = {message: "", recipes: [], tags: []}
+const initialState: InitialStateType = {message: "", recipes: [], tags: [], title: ""}
 
 type ActionType = 
     | {type: "ADD_TO_MEAL_PLAN"; recipe: {url: string; label: string} }
@@ -13,6 +13,7 @@ type ActionType =
     | {type: "INCREMENT_TAG"; tag: TagType}
     | {type: "DECREMENT_TAG"; tag: TagType}
     | {type: "REMOVE_TAG"; tag: TagType }
+    | {type: "UPDATE_TITLE"; title: string}
 
 
 export default function mealPlan(state = initialState, action: ActionType) {
@@ -59,6 +60,8 @@ export default function mealPlan(state = initialState, action: ActionType) {
                 }
             })
             return {...state, tags: newRemTagArr }
+        case 'UPDATE_TITLE':
+            return {...state, title: action.title}
         default:
             return state;
     }
