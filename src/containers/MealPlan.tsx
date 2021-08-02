@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {SearchResultsGrid, DashboardBlock} from '../style/dashboard'
-import {MessageHolder} from '../style/base'
+import {MessageHolder, BlackButton} from '../style/base'
 import RecipeCard from '../components/RecipeCard'
 import MealPlanTitle from './MealPlanTitle'
+
 
 type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
 type MealPlanProps = {recipes: RecipeProps[], message: string}
@@ -28,6 +29,7 @@ function MealPlan(props: MealPlanProps) {
             <SearchResultsGrid>
                 {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} inMealPlan={true} />)}
             </SearchResultsGrid>
+            <BlackButton >Save Meal Plan</BlackButton>
         </ DashboardBlock>
     )
 }
