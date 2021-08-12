@@ -25,7 +25,14 @@ function RecipeCard(props: RecipeCardProps) {
 
     const handleAddToMealPlan = () => {
         // console.log("add to meal plan ", props.recipe)
-        props.addToMealPlan(props.recipe)
+        // only add fields that will be save to the database
+        props.addToMealPlan({
+            label: props.recipe.label,
+            source: props.recipe.source,
+            ingredientLines: props.recipe.ingredientLines,
+            url: props.recipe.url,
+            image: props.recipe.image
+        })
     }
 
     const handleRemoveFromMealPlan = () => {
