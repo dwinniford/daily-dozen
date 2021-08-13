@@ -9,6 +9,7 @@ import {BackgroundOverlay} from './style/base.js'
 import NavBar from './components/NavBar'
 import DashboardContainer from './containers/DashboardContainer'
 import MealPlans from './containers/MealPlans';
+import History from './containers/History';
 
 import {connect} from 'react-redux'
 
@@ -41,6 +42,9 @@ function App(props: PropsType) {
           <Route path="/signup" render={() => userToken()? <Redirect to="/dashboard" /> : <SignupPage />} />
           <Route path="/meal-plans">
             <MealPlans />
+          </Route>
+          <Route path="/history">
+            <History />
           </Route>
           <Route path="/">
             <Home />
