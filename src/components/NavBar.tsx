@@ -19,8 +19,9 @@ function NavBar(props: PropsType) {
     return (
         <NavGrid>
             <BlackButtonLink to="/">Home</BlackButtonLink>
-            <BlackButtonLink to="/about">About</BlackButtonLink>
+            {/* <BlackButtonLink to="/about">About</BlackButtonLink> */}
             { props.loggedIn? <BlackButtonLink to="/dashboard">Dashboard</BlackButtonLink> : null }
+            { props.loggedIn? <BlackButtonLink to="/history">History</BlackButtonLink> : null }
             { props.loggedIn? <BlackButtonLink to="/login" onClick={deleteToken}>Logout</BlackButtonLink> : <BlackButtonLink to="/login" >Login</BlackButtonLink> }
         </NavGrid>
     )
