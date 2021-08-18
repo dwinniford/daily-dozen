@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {SearchResultsGrid, DashboardBlock} from '../style/dashboard'
-import {MessageHolder, BlackButton} from '../style/base'
+import {MessageHolder, BlackButton, Title} from '../style/base'
 import RecipeCard from '../components/RecipeCard'
 import MealPlanTitle from './MealPlanTitle'
 import {useMutation} from '@apollo/client'
 import CREATE_MEAL_PLAN from '../gql/mutations/createMealPlan'
+import {Redirect} from 'react-router-dom'
 
 
 type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
@@ -38,9 +39,16 @@ function MealPlan(props: MealPlanProps) {
 
     if(error) {
         console.log("error", error.graphQLErrors)
+        return <Title>There was an error saving the meal plan.</Title>
+    }
+    if(loading) {
+        return <Title>Loading</Title>
     }
     if(called) {
         console.log("completed, data= ", data)
+        return (
+            <Redirect to="/history" />
+        )
     }
 
     return (
