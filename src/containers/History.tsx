@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import ME from '../gql/queries/me'
+import {Title} from '../style/base'
 
 type MealPlanType = {title: string}
 function History() {
@@ -14,7 +15,7 @@ function History() {
     if(data) {
         return(
             <div>
-                {data.me.mealPlans.map((m: MealPlanType) => <h2>{m.title}</h2>)}
+                {data.me.mealPlans.map((m: MealPlanType) => <Title>{m.title}</Title>)}
             </div>
         )
     }
