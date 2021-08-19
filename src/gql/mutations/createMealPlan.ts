@@ -14,6 +14,7 @@ mutation CreateMealPlan(
         tags: $tags
     }) {
          mealPlan {
+            id
             title
             recipes {
                 label

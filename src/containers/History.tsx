@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import ME from '../gql/queries/me'
 import {Title} from '../style/base'
 
-type MealPlanType = {title: string}
+type MealPlanType = {title: string, id: string}
 function History() {
     const {loading, error, data} = useQuery(ME)
 
@@ -15,7 +15,7 @@ function History() {
     if(data) {
         return(
             <div>
-                {data.me.mealPlans.map((m: MealPlanType) => <Title>{m.title}</Title>)}
+                {data.me.mealPlans.map((m: MealPlanType) => <Title key={m.id}>{m.title}</Title>)}
             </div>
         )
     }

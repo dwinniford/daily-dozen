@@ -6,6 +6,7 @@ const ME = gql`
             name 
             id 
             mealPlans {
+                id
                 title
                 recipes {
                     url
