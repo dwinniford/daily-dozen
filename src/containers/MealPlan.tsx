@@ -12,7 +12,7 @@ import {Redirect} from 'react-router-dom'
 
 type RecipeProps = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
 type TagProps = {}
-type MealPlanProps = {recipes: RecipeProps[], message: string, tags: TagProps[], title: string}
+type MealPlanProps = {recipes: RecipeProps[], message: string, tags: TagProps[], title: string, resetMealPlan: Function }
 function MealPlan(props: MealPlanProps) {
     // const [displayed, toggleDisplayed] = useState(false)
     const [opacity, toggleOpacity] = useState(0)
@@ -47,6 +47,7 @@ function MealPlan(props: MealPlanProps) {
     }
     if(called) {
         console.log("completed, data= ", data)
+        props.resetMealPlan()
         return (
             <Redirect to="/history" />
         )
@@ -72,5 +73,10 @@ const mapStateToProps = (state: {mealPlan: {recipes: RecipeProps[], message: str
         title: state.mealPlan.title
     }
 }
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        resetMealPlan: () => dispatch({type: "RESET_MEAL_PLAN"})
+    }
+}
 
-export default connect(mapStateToProps)(MealPlan) 
+export default connect(mapStateToProps, mapDispatchToProps)(MealPlan) 

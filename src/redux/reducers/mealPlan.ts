@@ -14,6 +14,7 @@ type ActionType =
     | {type: "DECREMENT_TAG"; tag: TagType}
     | {type: "REMOVE_TAG"; tag: TagType }
     | {type: "UPDATE_TITLE"; title: string}
+    | {type: "RESET_MEAL_PLAN"}
 
 
 export default function mealPlan(state = initialState, action: ActionType) {
@@ -62,6 +63,8 @@ export default function mealPlan(state = initialState, action: ActionType) {
             return {...state, tags: newRemTagArr }
         case 'UPDATE_TITLE':
             return {...state, title: action.title}
+        case 'RESET_MEAL_PLAN':
+            return {...initialState}
         default:
             return state;
     }
