@@ -6,6 +6,7 @@ import RecipeCard from '../components/RecipeCard'
 import MealPlanTitle from './MealPlanTitle'
 import {useMutation} from '@apollo/client'
 import CREATE_MEAL_PLAN from '../gql/mutations/createMealPlan'
+import ME from '../gql/queries/me'
 import {Redirect} from 'react-router-dom'
 
 
@@ -15,7 +16,7 @@ type MealPlanProps = {recipes: RecipeProps[], message: string, tags: TagProps[],
 function MealPlan(props: MealPlanProps) {
     // const [displayed, toggleDisplayed] = useState(false)
     const [opacity, toggleOpacity] = useState(0)
-    const [createMealPlan, {data, loading, error, called}] = useMutation(CREATE_MEAL_PLAN, {errorPolicy: 'all'})
+    const [createMealPlan, {data, loading, error, called}] = useMutation(CREATE_MEAL_PLAN, {errorPolicy: 'all', refetchQueries: [{query: ME}], awaitRefetchQueries: true})
 
     useEffect(function() {
         if(props.message.length) {
