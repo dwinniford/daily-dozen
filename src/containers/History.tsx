@@ -1,16 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useQuery } from '@apollo/client'
 import ME from '../gql/queries/me'
-import {Title, Subtitle} from '../style/base'
-import {DashboardGrid, DashboardBlock, SearchResultsGrid} from '../style/dashboard'
+import {Title, Subtitle, PositionTopRight} from '../style/base'
+import {DashboardGrid, DashboardBlock, SearchResultsGrid, CardHolder} from '../style/dashboard'
+import { WhiteChevronRight } from '../style/icons'
+import HistoryDetail from './HistoryDetail'
 
 type MealPlanType = {title: string, id: string}
 function History() {
     const {loading, error, data} = useQuery(ME)
+    const [detailId, setDetailId] = useState<null | string>(null)
+    const handleClick = (id: string) => {
+        setDetailId(id)
+    }
 
     if(loading) return <Title>Loading Meal Plans</Title>
     if(error) {
-        console.log(error)
+        console.log(error.graphQLErrors)
         return <Title>Error retrieving meal plans</Title>
     }
     if(data) {
@@ -19,10 +25,20 @@ function History() {
                 <DashboardBlock>
                     <Title>History</Title>
                     <SearchResultsGrid>
-                        {data.me.mealPlans.map((m: MealPlanType) => <Subtitle key={m.id}>{m.title}</Subtitle>)}              
+                        {data.me.mealPlans.map((m: MealPlanType) => {
+                             return (
+                                <CardHolder key={m.id}>
+                                    <Subtitle >{m.title}</Subtitle>
+                                    <PositionTopRight>
+                                        <WhiteChevronRight down="true" title="View Meal Plan" onClick={() => handleClick(m.id)}/>
+                                    </PositionTopRight>
+                                </ CardHolder>)
+                        })
+                        }              
                     </SearchResultsGrid>
-                  
+                    
                 </DashboardBlock>
+                {detailId ? <HistoryDetail id={detailId} /> : null}
             </DashboardGrid>
         )
     }
