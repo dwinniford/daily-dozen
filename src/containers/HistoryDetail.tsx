@@ -2,7 +2,7 @@ import React from 'react'
 // import {connect} from 'react-redux'
 import {SearchResultsGrid, DashboardBlock} from '../style/dashboard'
 import { BlackButton, Title} from '../style/base'
-// import RecipeCard from '../components/RecipeCard'
+import RecipeCard from '../components/RecipeCard'
 // import MealPlanTitle from './MealPlanTitle'
 import { useQuery} from '@apollo/client'
 // import CREATE_MEAL_PLAN from '../gql/mutations/createMealPlan'
@@ -27,7 +27,7 @@ function HistoryDetail(props: MealPlanProps) {
         <DashboardBlock>
             <Title>{data.mealPlanShow.title}</Title>
             <SearchResultsGrid>
-                {/* {props.recipes.map(r => <RecipeCard key={r.label+"-"+r.source} recipe={r} inMealPlan={true} />)} */}
+                {data.mealPlanShow.recipes.map((r: RecipeProps) => <RecipeCard key={r.label+"-"+r.source} recipe={r} inMealPlan={true} />)}
             </SearchResultsGrid>
             <BlackButton >Update Meal Plan</BlackButton>
         </ DashboardBlock>

@@ -6,7 +6,9 @@ import {WhiteChevronRight, WhitePlus, WhiteX} from '../style/icons'
 
 import RecipeInfoCard from './RecipeInfoCard'
 
-type RecipeType = {label: string, source: string, ingredientLines: string[], tags: { parent: string; ingredient: string; }[], url: string, image: string;}
+type RecipeType = {label: string, source: string, ingredientLines: string[], 
+    // tags: { parent: string; ingredient: string; }[], 
+    url: string, image: string;}
 type RecipeCardProps = {recipe: RecipeType, addToMealPlan: Function, inMealPlan: boolean, removeFromMealPlan: Function }
 
 function RecipeCard(props: RecipeCardProps) {
