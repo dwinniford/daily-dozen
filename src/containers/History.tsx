@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useQuery } from '@apollo/client'
 import ME from '../gql/queries/me'
-import {Title, Subtitle, PositionTopRight} from '../style/base'
+import {Title, Subtitle, PositionTopRight, ExpandButton} from '../style/base'
 import {DashboardGrid, DashboardBlock, SearchResultsGrid, CardHolder} from '../style/dashboard'
 import { WhiteChevronRight } from '../style/icons'
 import HistoryDetail from './HistoryDetail'
@@ -30,7 +30,9 @@ function History() {
                                 <CardHolder key={m.id}>
                                     <Subtitle >{m.title}</Subtitle>
                                     <PositionTopRight>
-                                        <WhiteChevronRight down="true" title="View Meal Plan" onClick={() => handleClick(m.id)}/>
+                                        <ExpandButton onClick={() => handleClick(m.id)}>
+                                            <WhiteChevronRight title="View Meal Plan" />
+                                        </ExpandButton>
                                     </PositionTopRight>
                                 </ CardHolder>)
                         })
