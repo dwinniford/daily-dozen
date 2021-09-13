@@ -8,6 +8,7 @@ import { useQuery, useMutation} from '@apollo/client'
 // import CREATE_MEAL_PLAN from '../gql/mutations/createMealPlan'
 import DELETE_MEAL_PLAN from '../gql/mutations/deleteMealPlan'
 import MEAl_PLAN_SHOW from '../gql/queries/mealPlanShow'
+import ME from '../gql/queries/me'
 // import {Redirect} from 'react-router-dom'
 
 
@@ -16,7 +17,7 @@ type TagProps = { parent: string; ingredient: string; }[]
 type MealPlanProps = { id: string }
 function HistoryDetail(props: MealPlanProps) {
     const {loading, data, error} = useQuery(MEAl_PLAN_SHOW, {variables: {id: props.id}})
-    const [deleteMealPlan, deleteStatus] = useMutation(DELETE_MEAL_PLAN)
+    const [deleteMealPlan, deleteStatus] = useMutation(DELETE_MEAL_PLAN, {errorPolicy: 'all', refetchQueries: [{query: ME}], awaitRefetchQueries: true})
 
     
 
@@ -39,6 +40,7 @@ function HistoryDetail(props: MealPlanProps) {
     }
     if(deleteStatus.data) {
         console.log(deleteStatus.data)
+        return <Title>Meal Plan deleted. Select a new Meal Plan.</Title>
     }
 
     return (
