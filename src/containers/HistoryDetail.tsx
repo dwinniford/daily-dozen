@@ -3,6 +3,7 @@ import React from 'react'
 import {SearchResultsGrid, DashboardBlock} from '../style/dashboard'
 import { BlackButton, Title} from '../style/base'
 import HistoryRecipeCard from '../components/history/HistoryRecipeCard'
+import HistoryMealPlanTitle from '../components/history/HistoryMealPlanTitle'
 // import MealPlanTitle from './MealPlanTitle'
 import { useQuery, useMutation} from '@apollo/client'
 // import CREATE_MEAL_PLAN from '../gql/mutations/createMealPlan'
@@ -45,7 +46,7 @@ function HistoryDetail(props: MealPlanProps) {
 
     return (
         <DashboardBlock>
-            <Title>{data.mealPlanShow.title}</Title>
+            <HistoryMealPlanTitle mealPlanTitle={data.mealPlanShow.title} />
             <SearchResultsGrid>
                 {data.mealPlanShow.recipes.map((r: RecipeProps) => <HistoryRecipeCard key={r.label+"-"+r.source} recipe={r} tags={data.mealPlanShow.tags} />)}
             </SearchResultsGrid>
