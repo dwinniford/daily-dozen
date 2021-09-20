@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
+import { useMutation } from '@apollo/client'
+import UPDATE_MEAL_PLAN from '../../gql/mutations/updateMealPlan'
 import { Title, SuperScriptButton } from '../../style/base'
 import {EditPencil, SaveDisk} from '../../style/icons'
 import {TitleHolder, FormInput} from '../../style/dashboard'
 
-type PropsType = {mealPlanTitle: string}
+type PropsType = {mealPlanTitle: string, id: string}
 function HistoryMealPlanTitle(props: PropsType) {
     const [edit, setEdit] = useState(false)
     const [title, setTitle] = useState(props.mealPlanTitle)
+    const [updateMealPlan, updateMealPlanStatus] = useMutation(UPDATE_MEAL_PLAN)
 
     const toggleEdit = () => {
         edit? setEdit(false) : setEdit(true)
@@ -20,7 +23,17 @@ function HistoryMealPlanTitle(props: PropsType) {
     const saveTitle = () => {
         // save meal plan title in with apollo client
         console.log("saving new title")
+        updateMealPlan({variables: {id: props.id, title: title }})
         toggleEdit()
+    }
+    if(updateMealPlanStatus.loading) {
+        console.log("updating meal plan")
+    }
+    if(updateMealPlanStatus.error) {
+        console.log(updateMealPlanStatus.error.graphQLErrors)
+    }
+    if(updateMealPlanStatus.data) {
+        console.log(updateMealPlanStatus.data)
     }
 
     

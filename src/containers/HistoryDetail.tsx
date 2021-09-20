@@ -46,7 +46,7 @@ function HistoryDetail(props: MealPlanProps) {
 
     return (
         <DashboardBlock>
-            <HistoryMealPlanTitle mealPlanTitle={data.mealPlanShow.title} />
+            <HistoryMealPlanTitle mealPlanTitle={data.mealPlanShow.title} id={data.mealPlanShow.id} />
             <SearchResultsGrid>
                 {data.mealPlanShow.recipes.map((r: RecipeProps) => <HistoryRecipeCard key={r.label+"-"+r.source} recipe={r} tags={data.mealPlanShow.tags} />)}
             </SearchResultsGrid>
@@ -55,6 +55,5 @@ function HistoryDetail(props: MealPlanProps) {
         </ DashboardBlock>
     )
 }
-
 
 export default HistoryDetail
